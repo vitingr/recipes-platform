@@ -19,13 +19,13 @@ const Navbar = () => {
   const [showMenu, setShowMenu] = useState<boolean>(false)
 
   return (
-    <header className='w-full bg-white p-6 fixed flex justify-center'>
+    <header className='w-full bg-white p-6 fixed flex justify-center selection:text-white selection:bg-[#f1656a]'>
       <nav className='w-full max-w-[1600px] flex justify-around gap-2 items-center'>
         <Image src={"/assets/logo.png"} alt='logo' width={120} height={60} className='selection:bg-transparent cursor-pointer' />
 
         <ul className='sm:flex justify-center items-center gap-16 hidden'>
           <Link href={"/"}><li className='duration-300 transition-all hover:text-[#f1656a]'>Início</li></Link>
-          <Link href={"/"}><li className='duration-300 transition-all hover:text-[#f1656a]'>Receitas</li></Link>
+          <Link href={"/home"}><li className='duration-300 transition-all hover:text-[#f1656a]'>Receitas</li></Link>
           <Link href={"/profile/partner"}><li className='duration-300 transition-all hover:text-[#f1656a]'>Seja Parceiro</li></Link>
           <Link href={"/"}><li className='duration-300 transition-all hover:text-[#f1656a]'>Sobre</li></Link>
           <Link href={"/"}><li className='duration-300 transition-all hover:text-[#f1656a]'>Contatos</li></Link>
@@ -73,7 +73,7 @@ const Navbar = () => {
                 <h3 className='text-[#717171] w-full text-lg'>Receitas Favoritas</h3>
               </Link>
               {data.getUser.partner ? (
-                <Link href="/" className='flex w-full justify-between items-center gap-8 cursor-pointer'>
+                <Link href="/home/createRecipe" className='flex w-full justify-between items-center gap-8 cursor-pointer'>
                   <IoAdd  size={30} className="gray-icon" />
                   <h3 className='text-[#717171] w-full text-lg'>Adicionar uma Receita</h3>
                 </Link>

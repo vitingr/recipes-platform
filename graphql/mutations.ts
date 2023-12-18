@@ -1,11 +1,11 @@
 import { gql } from "@apollo/client";
 
 export const CREATE_RECIPE = gql`
-  mutation createRecipe(
+  mutation (
     $title: String!
     $description: String!
-    $ingredients: [String]
-    $methods: [String]
+    $ingredients: [String!]!
+    $methods: [String!]!
     $creatorId: String!
     $type: String!
     $photo: String!

@@ -61,34 +61,16 @@ export const UPDATE_BIO = gql`
   }
 `;
 
-export const CREATE_RECIPE = gql`
-  mutation createRecipe(
-    $title: String!
-    $description: String!
-    $ingredients: [String]
-    $methods: [String]
-    $creatorId: String!
-    $type: String!
-    $photo: String!
-  ) {
-    createRecipe(
-      createRecipeInput: {
-        title: $title
-        description: $description
-        ingredients: $ingredients
-        methods: $methods
-        creatorId: $creatorId
-        type: $type
-        photo: $photo
-      }
-    ) {
+export const GET_ALL_RECIPES = gql`
+  query getAllRecipes {
+    recipes {
+      id
       title
-      description
       ingredients
       methods
-      creatorId
-      type
       photo
+      qtdLikes
+      creatorId
     }
   }
 `;

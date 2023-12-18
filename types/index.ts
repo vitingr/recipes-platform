@@ -28,10 +28,11 @@ export interface RecipeProps {
   id: string;
   title: string;
   description: string;
+  ingredients: string[];
+  methods: string[];
   photo: string;
   qtdLikes: number;
   creatorId: string;
-  content: string;
   type: string;
 }
 

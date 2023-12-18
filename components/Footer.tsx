@@ -6,7 +6,7 @@ import React from 'react'
 const Footer = () => {
   return (
     <footer>
-      <div className='border-zinc-100 border-t-2 min-h-[400px] flex w-full p-16 flex-col sm:flex-row'>
+      <div className='border-zinc-100 border-t-2 min-h-[400px] flex w-full p-16 flex-col sm:flex-row selection:text-white selection:bg-[#f1656a]'>
         <div className='w-full xs:mb-12 flex flex-col items-center xs:justify-center'>
           <Image src={"/assets/logo.png"} className='max-w-[125px] mb-6'  alt='Logo' width={120} height={60} />
           <p className='text-gray-700'>Plataforma de Receitas</p>
