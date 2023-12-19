@@ -74,3 +74,19 @@ export const GET_ALL_RECIPES = gql`
     }
   }
 `;
+
+export const GET_RECIPE_DATA = gql`
+  query getRecipeData($id: String!) {
+    recipe(id: $id) {
+      id
+      title
+      ingredients
+      methods
+      photo
+      qtdLikes
+      creatorId
+      creatorName
+      creatorPhoto
+    }
+  }
+`;

@@ -7,6 +7,8 @@ export const CREATE_RECIPE = gql`
     $ingredients: [String!]!
     $methods: [String!]!
     $creatorId: String!
+    $creatorPhoto: String!
+    $creatorName: String!
     $type: String!
     $photo: String!
   ) {
@@ -17,6 +19,8 @@ export const CREATE_RECIPE = gql`
         ingredients: $ingredients
         methods: $methods
         creatorId: $creatorId
+        creatorPhoto: $creatorPhoto
+        creatorName: $creatorName
         type: $type
         photo: $photo
       }
@@ -26,6 +30,8 @@ export const CREATE_RECIPE = gql`
       ingredients
       methods
       creatorId
+      creatorPhoto
+      creatorName
       type
       photo
     }

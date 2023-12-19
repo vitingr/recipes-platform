@@ -54,6 +54,8 @@ const page = () => {
           ingredients: ["teste"],
           methods: [firstStep, secondStep, thirdStep, fourthStep, fifthStep],
           creatorId: data.getUser.id as string,
+          creatorPhoto: data.getUser.photo  as string,
+          creatorName: data.getUser.name as string,
           type: "teste",
           photo: "/assets/image.jpg",
         }

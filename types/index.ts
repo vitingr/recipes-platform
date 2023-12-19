@@ -41,3 +41,8 @@ export interface UploadProps {
   currentFoto: string;
   text?: string;
 }
+
+export interface HolidayProps {
+  image: string;
+  title: string;
+}

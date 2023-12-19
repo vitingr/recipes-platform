@@ -40,14 +40,6 @@ const SwiperRecipes = ({ recipes }: { recipes: RecipeProps[] }) => {
         1712: {
           slidesPerView: 6,
           spaceBetween: 40,
-        },
-        2000: {
-          slidesPerView: 7,
-          spaceBetween: 50,
-        },
-        2525: {
-          slidesPerView: 8,
-          spaceBetween: 50,
         }
       }}>
       {recipes.map((recipe: RecipeProps, index: number) => (

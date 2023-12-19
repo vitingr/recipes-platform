@@ -1,11 +1,13 @@
 "use client"
 
 import Loader from '@/components/Loader'
+import HolidayCard from '@/components/Recipe/HolidayCard'
 import RecipeCard from '@/components/Recipe/RecipeCard'
 import SwiperRecipes from '@/components/config/SwiperRecipes'
 import ToastMessage from '@/components/config/ToastMessage'
+import { holidayCards } from '@/constants/holiday-cards'
 import { GET_ALL_RECIPES } from '@/graphql/queries'
-import { RecipeProps } from '@/types'
+import { HolidayProps, RecipeProps } from '@/types'
 import { infoUser } from '@/utils/common/userContext'
 import { useQuery } from '@apollo/client'
 import { useSession } from 'next-auth/react'
@@ -49,7 +51,17 @@ const page = () => {
       </section>
 
       <section className='w-full mt-[10em]'>
-        <h1 className='text-3xl font-bold'>Explorar receitas</h1>
+        <h1 className='text-3xl font-bold'>Receitas Temáticas</h1>
+
+        <div className='flex gap-16 w-full justify-center flex-wrap mt-16'>
+          {holidayCards.map((holiday: HolidayProps, index: number) => (
+            <HolidayCard key={index} title={holiday.title} image={holiday.image} />
+          ))}
+        </div>
+      </section>
+
+      <section>
+        //
       </section>
 
     </div>
