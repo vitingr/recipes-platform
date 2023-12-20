@@ -11,7 +11,7 @@ import { toast } from 'react-toastify'
 import { CIDADES_BRASIL } from '@/constants/json-citys'
 import ToastMessage from '@/components/config/ToastMessage'
 import { useMutation } from '@apollo/client'
-import { UPDATE_USER } from '@/graphql/queries'
+import { UPDATE_USER } from '@/graphql/mutations'
 
 const page = () => {
 

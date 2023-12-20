@@ -34,7 +34,7 @@ export default function RootLayout({
               <>
                 <UserProvider>
                   <Navbar />
-                  <main className='min-h-[62vh] pt-[80px] flex flex-col items-center w-full selection:text-white selection:bg-[#f1656a]'>
+                  <main className='min-h-[62vh] pt-[80px] flex flex-col items-center w-full selection:text-white selection:bg-[#f1656a] bg-[#fafafa] sm:pt-[5%] sm:pb-[2.5%]'>
                     {children}
                   </main>
                   <Footer />
@@ -46,7 +46,7 @@ export default function RootLayout({
               <>
                 <UserProvider>
                   <Navbar />
-                  <main className='min-h-[62vh] pt-[80px] flex flex-col items-center w-full selection:text-white selection:bg-[#f1656a]'>
+                  <main className='min-h-[62vh] pt-[80px] flex flex-col items-center w-full selection:text-white selection:bg-[#f1656a] bg-[#fafafa] sm:pt-[5%] sm:pb-[2.5%]'>
                     {children}
                   </main>
                   <Footer />

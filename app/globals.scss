@@ -183,6 +183,16 @@
   color: #a0a0a0;
 }
 
+.gray-icon-animated * {
+  transition-timing-function: ease-in-out;
+  transition-duration: 0.3s;
+  color: #a0a0a0;
+}
+
+.gray-icon-animated:hover * {
+  color: #f1656a;
+}
+
 .popup-wrapper {
   position: fixed;
   width: 100%;

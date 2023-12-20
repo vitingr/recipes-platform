@@ -2,20 +2,37 @@
 
 import Popup from '@/components/Popup';
 import UserBio from '@/components/Popups/UserBio';
+import ProfileRecipe from '@/components/Recipe/ProfileRecipe';
 import ToastMessage from '@/components/config/ToastMessage';
+import { GET_USER_CREATED_RECIPES } from '@/graphql/queries';
+import { RecipeProps } from '@/types';
 import { infoUser } from '@/utils/common/userContext';
+import { useQuery } from '@apollo/client';
 import { useSession } from 'next-auth/react'
 import Image from 'next/image'
 import Link from 'next/link';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { TiStarFullOutline } from "react-icons/ti";
 
 const page = () => {
 
-  const { data: session } = useSession()
+  const { data: session, status } = useSession()
   const { data } = infoUser()
 
   const [editBio, setEditBio] = useState<boolean>(false)
+
+  const { data: createdRecipes, loading: createdRecipesLoading } = useQuery(GET_USER_CREATED_RECIPES, {
+    variables: {
+      id: "657b03d99cc86de6da90fc65" as string,
+    }
+  })
+
+  useEffect(() => {
+    if (session?.user?.email !== undefined && status === "authenticated" && createdRecipesLoading === false) {
+      console.log("Data fetched successfully")
+      console.log(createdRecipes)
+    }
+  }, [session, createdRecipesLoading])
 
   return (
     <div className='w-full sm:p-[5%] p-[2%] max-w-[1850px] flex flex-col items-center'>
@@ -64,23 +81,10 @@ const page = () => {
           <div className='w-full'>
             <h1 className='mb-16 mt-4 text-2xl font-semibold cursor-default transition-all duration-200 hover:text-[#f1656a]'>Minhas Receitas Favoritas</h1>
             <div className='flex flex-wrap gap-6 w-full'>
-              <div className='shadow-sm shadow-neutral-400 w-[275px] h-[300px] rounded-xl'>
-                <div style={{ backgroundImage: `url("https://www.receiteria.com.br/wp-content/uploads/receitas-de-sashimi-de-salmao-0.jpg")` }} className='w-full h-[100px] bg-cover bg-no-repeat rounded-t-xl bg-center'>
-                </div>
-                <div className='p-4'>
-                  <h1 className='text-center text-lg font-semibold'>Sashimi de Salmão</h1>
-                  <div className='w-full flex gap-1 justify-center mt-2 items-center'>
-                    <TiStarFullOutline size={16} className="gold-icon" />
-                    <span className='text-sm'>168</span>
-                  </div>
-                  <p className='text-center text-sm text-[#717171] mt-6'>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente molestiae reprehenderit earum nisi
-                  </p>
-                  <Link href={"/"} className='w-full flex justify-center mt-6 text-sm cursor-pointer text-[#f1656a]'>
-                    Ver receita
-                  </Link>
-                </div>
-              </div>
+              {JSON.stringify(createdRecipes)}
+              {/* {createdRecipes.map((recipe: RecipeProps, index: number) => (
+                <ProfileRecipe recipe={recipe} key={index} />
+              ))} */}
             </div>
           </div>
         </div>

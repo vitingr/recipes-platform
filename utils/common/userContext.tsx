@@ -1,6 +1,7 @@
 "use client"
 
-import { CREATE_USER, GET_USER } from '@/graphql/queries'
+import { CREATE_USER } from '@/graphql/mutations'
+import { GET_USER } from '@/graphql/queries'
 import { UserContextProps, UserProps } from '@/types'
 import { useMutation, useQuery } from '@apollo/client'
 import { useSession } from 'next-auth/react'
@@ -62,6 +63,7 @@ export const UserProvider = ({
   useEffect(() => {
     if (session?.user?.email !== undefined && status === "authenticated" && userLoading === false) {
       getUserInfo()
+      console.log(userData)
     }
   }, [session, userLoading])
 

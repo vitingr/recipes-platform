@@ -37,3 +37,45 @@ export const CREATE_RECIPE = gql`
     }
   }
 `;
+
+export const CREATE_USER = gql`
+  mutation createUser(
+    $name: String!
+    $firstname: String!
+    $lastname: String!
+    $email: String!
+    $photo: String!
+  ) {
+    createNewUser(
+      createUser: {
+        name: $name
+        firstname: $firstname
+        lastname: $lastname
+        email: $email
+        photo: $photo
+      }
+    ) {
+      name
+      firstname
+      lastname
+      email
+      photo
+    }
+  }
+`;
+
+export const UPDATE_USER = gql`
+  mutation ($id: String!) {
+    updateUser(updateUser: { id: $id }) {
+      partner
+    }
+  }
+`;
+
+export const UPDATE_BIO = gql`
+  mutation ($id: String!, $bio: String!) {
+    updateBio(updateBio: { id: $id, bio: $bio }) {
+      bio
+    }
+  }
+`;
