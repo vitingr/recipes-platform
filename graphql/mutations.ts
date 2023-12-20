@@ -79,3 +79,25 @@ export const UPDATE_BIO = gql`
     }
   }
 `;
+
+export const CREATE_COMMENT = gql`
+  mutation (
+    $recipeId: String!
+    $creatorId: String!
+    $creatorPhoto: String!
+    $creatorName: String!
+    $content: String!
+  ) {
+    createComment(
+      createCommentInput: {
+        recipeId: $recipeId
+        creatorId: $creatorId
+        creatorPhoto: $creatorPhoto
+        creatorName: $creatorName
+        content: $content
+      }
+    ) {
+      recipeId
+    }
+  }
+`;

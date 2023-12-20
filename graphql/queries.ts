@@ -52,7 +52,30 @@ export const GET_RECIPE_DATA = gql`
 export const GET_USER_CREATED_RECIPES = gql`
   query getUserCreatedRecipes($id: String!) {
     getUserRecipes(id: $id) {
+      id
       title
+      ingredients
+      methods
+      photo
+      qtdLikes
+      creatorId
+      creatorName
+      creatorPhoto
     }
   }
-`
+`;
+export const GET_RECIPE_COMMENTS = gql`
+  query getRecipeComments($id: String!) {
+    findRecipeCommentaries(id: $id) {
+      id
+      recipeId
+      creatorId
+      creatorPhoto
+      creatorName
+      content
+      qtdLikes
+      likes
+      createdAt
+    }
+  }
+`;

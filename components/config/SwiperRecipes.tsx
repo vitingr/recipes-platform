@@ -1,22 +1,25 @@
-import React from 'react'
-import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
-import { Swiper, SwiperSlide } from 'swiper/react';
+import React from "react";
+import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
-import 'swiper/css';
-import 'swiper/css/bundle';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import 'swiper/css/scrollbar';
-import { RecipeProps } from '@/types';
-import RecipeCard from '../Recipe/RecipeCard';
+import "swiper/css";
+import "swiper/css/bundle";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/scrollbar";
+import { RecipeProps } from "@/types";
+import RecipeCard from "../Recipe/RecipeCard";
 
 const SwiperRecipes = ({ recipes }: { recipes: RecipeProps[] }) => {
   return (
-    <Swiper modules={[Navigation, Pagination, Scrollbar, A11y]}
+    <Swiper
+      modules={[Navigation, Pagination, Scrollbar, A11y]}
       spaceBetween={50}
       slidesPerView={8}
-      scrollbar={{ draggable: true, hide: true, el: 'no-scrollbar' }} className='mt-16 w-full no-scrollbar' breakpoints={{
+      scrollbar={{ draggable: true, hide: true, el: "no-scrollbar" }}
+      className="mt-16 w-full no-scrollbar"
+      breakpoints={{
         500: {
           slidesPerView: 1,
           spaceBetween: 5,
@@ -40,15 +43,16 @@ const SwiperRecipes = ({ recipes }: { recipes: RecipeProps[] }) => {
         1712: {
           slidesPerView: 6,
           spaceBetween: 40,
-        }
-      }}>
+        },
+      }}
+    >
       {recipes.map((recipe: RecipeProps, index: number) => (
         <SwiperSlide key={index}>
           <RecipeCard content={recipe} />
         </SwiperSlide>
       ))}
     </Swiper>
-  )
-}
+  );
+};
 
-export default SwiperRecipes
+export default SwiperRecipes;

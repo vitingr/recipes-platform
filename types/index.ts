@@ -33,6 +33,8 @@ export interface RecipeProps {
   photo: string;
   qtdLikes: number;
   creatorId: string;
+  creatorName: string;
+  creatorPhoto: string;
   type: string;
 }
 
@@ -45,4 +47,16 @@ export interface UploadProps {
 export interface HolidayProps {
   image: string;
   title: string;
+}
+
+export interface CommentProps {
+  id: string;
+  recipeId: string;
+  creatorId: string;
+  creatorPhoto: string;
+  creatorName: string;
+  content: string;
+  qtdLikes?: number;
+  likes?: string[];
+  createdAt: Date;
 }

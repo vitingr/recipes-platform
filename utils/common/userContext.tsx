@@ -1,31 +1,31 @@
-"use client"
+"use client";
 
-import { CREATE_USER } from '@/graphql/mutations'
-import { GET_USER } from '@/graphql/queries'
-import { UserContextProps, UserProps } from '@/types'
-import { useMutation, useQuery } from '@apollo/client'
-import { useSession } from 'next-auth/react'
-import React, { createContext, useContext, useEffect, useState } from 'react'
+import { CREATE_USER } from "@/graphql/mutations";
+import { GET_USER } from "@/graphql/queries";
+import { UserContextProps, UserProps } from "@/types";
+import { useMutation, useQuery } from "@apollo/client";
+import { useSession } from "next-auth/react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 
-const UserContext = createContext<UserContextProps | any>(undefined)
+const UserContext = createContext<UserContextProps | any>(undefined);
 
-export const UserProvider = ({
-  children
-}: {
-  children: React.ReactNode
-}) => {
+export const UserProvider = ({ children }: { children: React.ReactNode }) => {
+  const { data: session, status } = useSession();
+  const [data, setData] = useState<UserProps[]>([]);
 
-  const { data: session, status } = useSession()
-  const [data, setData] = useState<UserProps[]>([])
+  const [createUser] = useMutation(CREATE_USER);
 
-  const [createUser] = useMutation(CREATE_USER)
-
-  const { data: userData, loading: userLoading, error: userError, refetch: refetchUser } = useQuery(GET_USER, {
+  const {
+    data: userData,
+    loading: userLoading,
+    error: userError,
+    refetch: refetchUser,
+  } = useQuery(GET_USER, {
     variables: {
-      email: session?.user?.email
+      email: session?.user?.email,
     },
     skip: !session?.user?.email, // Skip the query if email is not available
-  })
+  });
 
   const getUserInfo = async () => {
     try {
@@ -33,7 +33,6 @@ export const UserProvider = ({
       if (userLoading === false) {
         // If user doesnt exists, create a new one
         if (userData === undefined) {
-
           // Initial Params
           const name = session?.user?.name;
           const firstname = name?.split(" ")[0];
@@ -48,11 +47,11 @@ export const UserProvider = ({
               email: session?.user?.email || "",
               photo: session?.user?.image || "",
             },
-          })
+          });
           // Refresh data to get the current user info
-          await refetchUser()
+          await refetchUser();
         } else {
-          setData(userData)
+          setData(userData);
         }
       }
     } catch (error) {
@@ -61,17 +60,20 @@ export const UserProvider = ({
   };
 
   useEffect(() => {
-    if (session?.user?.email !== undefined && status === "authenticated" && userLoading === false) {
-      getUserInfo()
-      console.log(userData)
+    if (
+      session?.user?.email !== undefined &&
+      status === "authenticated" &&
+      userLoading === false
+    ) {
+      getUserInfo();
     }
-  }, [session, userLoading])
+  }, [session, userLoading]);
 
   return (
     <UserContext.Provider value={{ data, setData, getUserInfo }}>
       {children}
     </UserContext.Provider>
-  )
-}
+  );
+};
 
-export const infoUser = () => useContext(UserContext)
+export const infoUser = () => useContext(UserContext);

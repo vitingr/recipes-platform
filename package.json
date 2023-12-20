@@ -37,6 +37,7 @@
     "three": "^0.159.0"
   },
   "devDependencies": {
+    "@biomejs/biome": "1.4.1",
     "@graphql-codegen/cli": "^5.0.0",
     "@graphql-codegen/client-preset": "^4.1.0",
     "@types/node": "^20",
