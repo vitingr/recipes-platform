@@ -1,7 +1,38 @@
+"use client";
+
+import SwiperRecipes from "@/components/config/SwiperRecipes";
+import { GET_ALL_RECIPES } from "@/graphql/queries";
+import { useQuery } from "@apollo/client";
 import Image from "next/image";
+import { useEffect } from "react";
 import { IoSearch } from "react-icons/io5";
 
 export default function Home() {
+  const {
+    data: recipeData,
+    loading: recipeLoading,
+    refetch: refetchRecipes,
+  } = useQuery(GET_ALL_RECIPES);
+
+  const getAllRecipes = async () => {
+    try {
+      if (recipeLoading === false) {
+        if (recipeData.recipes.length === 0) {
+          await refetchRecipes();
+        }
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    if (recipeLoading === false) {
+      getAllRecipes();
+      console.log(recipeData);
+    }
+  }, [recipeLoading]);
+
   return (
     <div className="min-h-[62vh] sm:p-[5%] p-[2%] max-w-[1250px] w-full flex flex-col items-center">
       <section className="w-full max-w-[750px] bg-[#f1f2f4] p-6 rounded-xl flex gap-6 sm:flex-nowrap flex-wrap">
@@ -59,13 +90,9 @@ export default function Home() {
 
       <section className="pt-20 mt-20 border-t border-neutral-200 mb-20 w-full">
         <h1>Receitas do momento</h1>
-        <div className="flex gap-6 items-center justify-center mt-16 w-full">
-          <div>teste</div>
-          <div>teste</div>
-          <div>teste</div>
-          <div>teste</div>
-          <div>teste</div>
-        </div>
+        {recipeData && recipeData.recipes && (
+          <SwiperRecipes recipes={recipeData.recipes} />
+        )}
       </section>
     </div>
   );

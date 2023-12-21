@@ -51,7 +51,7 @@ const Navbar = () => {
               Seja Parceiro
             </li>
           </Link>
-          <Link href={"/"}>
+          <Link href={"/about"}>
             <li className="duration-300 transition-all hover:text-[#f1656a]">
               Sobre
             </li>

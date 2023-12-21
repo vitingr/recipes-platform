@@ -52,9 +52,6 @@ const page = () => {
       <section className="w-full flex flex-col">
         <h1 className="text-3xl font-bold">Explorar receitas</h1>
         <SwiperRecipes recipes={recipeData.recipes} />
-        {/* <div className='mt-20 bg-[#f1656a] text-white rounded-full font-semibold py-2 w-[125px] text-center'>
-          Ver mais
-        </div> */}
       </section>
 
       <section className="w-full mt-[10em]">
