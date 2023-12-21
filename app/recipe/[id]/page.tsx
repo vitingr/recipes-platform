@@ -17,6 +17,7 @@ import { toast } from "react-toastify";
 import { CREATE_COMMENT } from "@/graphql/mutations";
 import Comment from "@/components/Comment";
 import { CommentProps } from "@/types";
+import { TiStarOutline, TiStarFullOutline } from "react-icons/ti";
 
 const page = () => {
   // Get User Data
@@ -93,7 +94,7 @@ const page = () => {
     }
   }, [session, query, recipeLoading]);
 
-  return session?.user?.email && recipeData ? (
+  return session?.user?.email && recipeData && recipeData.recipe ? (
     <div className="w-full sm:p-[5%] p-[2%] max-w-[1250px] flex flex-col bg-white rounded-xl shadow-sm shadow-neutral-200">
       <ToastMessage />
       <section className="flex gap-2 items-center">
@@ -124,25 +125,36 @@ const page = () => {
             </p>
           </div>
         </div>
-        <p className="text-justify text-[#717171]">
-          {recipeData.recipe.description}
-        </p>
       </section>
 
-      <section className="w-full flex flex-col place-items-center mt-[50px] sm:mt-[25px]">
-        <h1 className="text-3xl font-semibold">{recipeData.recipe.title}</h1>
-        <h5 className="text-sm italic">{recipeData.recipe.type || "teste"}</h5>
+      <section className="w-full flex justify-between items-center mt-[50px] sm:mt-[25px]">
+        <div className="w-full flex flex-col items-center">
+          <h1 className="text-3xl font-semibold">{recipeData.recipe.title}</h1>
+          <h5 className="text-sm italic">
+            {recipeData.recipe.type || "teste"}
+          </h5>
+        </div>
+        <div className="flex items-center">
+          {recipeData.recipe.qtdLikes === 0 ? (
+            <TiStarOutline size={25} className="gray-icon cursor-pointer" />
+          ) : (
+            <TiStarFullOutline size={25} className="gold-icon cursor-pointer" />
+          )}
+        </div>
       </section>
 
       <section className="mt-[3em]">
-        <h1 className="text-xl font-semibold mt-[2em]">Fotos</h1>
-        <Image
-          src={recipeData.recipe.photo}
-          alt="Recipe Photo"
-          width={100}
-          height={100}
-          className="w-full h-full max-w-[100px] max-h-[100px] rounded-lg cursor-zoom-in transition-all duration-300 hover:scale-105"
-        />
+        <h1 className="text-xl font-semibold mt-[2em]">Informações</h1>
+        <div className="flex justify-between w-full gap-4 mt-2">
+          <Image
+            src={recipeData.recipe.photo}
+            alt="Recipe Photo"
+            width={150}
+            height={150}
+            className="w-full h-full max-w-[100px] max-h-[100px] rounded-lg cursor-zoom-in transition-all duration-300 hover:scale-105"
+          />
+          <p className="text-justify text-[#717171]">{recipeData.recipe.description} Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum impedit accusantium explicabo voluptas cupiditate vero! Reprehenderit voluptas enim, sapiente cumque similique in quidem. Atque asperiores minus incidunt sed a aspernatur.</p>
+        </div>
       </section>
 
       <section className="mt-[1em]">

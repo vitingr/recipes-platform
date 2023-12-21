@@ -59,7 +59,7 @@ export default function Home() {
             Ver mais
           </div>
         </div>
-      </section>
+      </section> 
 
       <section className="w-full mt-[10em] flex flex-col items-center">
         <h1 className="text-4xl font-bold text-center">

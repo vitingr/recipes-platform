@@ -1,5 +1,6 @@
 "use client";
 
+import Loader from "@/components/Loader";
 import { CREATE_USER } from "@/graphql/mutations";
 import { GET_USER } from "@/graphql/queries";
 import { UserContextProps, UserProps } from "@/types";
@@ -11,7 +12,7 @@ const UserContext = createContext<UserContextProps | any>(undefined);
 
 export const UserProvider = ({ children }: { children: React.ReactNode }) => {
   const { data: session, status } = useSession();
-  const [data, setData] = useState<UserProps[]>([]);
+  const [data, setData] = useState<UserProps[] | any>([]);
 
   const [createUser] = useMutation(CREATE_USER);
 
@@ -69,10 +70,12 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
     }
   }, [session, userLoading]);
 
-  return (
+  return data.getUser ? (
     <UserContext.Provider value={{ data, setData, getUserInfo }}>
       {children}
     </UserContext.Provider>
+  ) : (
+    <Loader />
   );
 };
 

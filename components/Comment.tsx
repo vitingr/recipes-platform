@@ -1,10 +1,11 @@
 import { CommentProps } from "@/types";
 import Image from "next/image";
 import React from "react";
+import { SlLike, SlDislike  } from "react-icons/sl";
 
 const Comment = ({ comment }: { comment: CommentProps }) => {
   return (
-    <div className="w-full flex items-start gap-2 pb-8 mb-8 border-b border-neutral-100">
+    <div className="w-full flex items-start gap-2 pb-6 mb-6 border-b border-neutral-100">
       <Image
         src={comment.creatorPhoto}
         alt="Profile Picture"
@@ -20,6 +21,10 @@ const Comment = ({ comment }: { comment: CommentProps }) => {
           </p>
         </div>
         <p className="text-justify text-sm">{comment.content}</p>
+        <div className="flex items-center gap-4 mt-6">
+          <SlLike sie={15} className="gray-icon cursor-pointer"/>
+          <SlDislike sie={15} className="gray-icon cursor-pointer"/>
+        </div>
       </div>
     </div>
   );

@@ -64,9 +64,26 @@ export const GET_USER_CREATED_RECIPES = gql`
     }
   }
 `;
+
 export const GET_RECIPE_COMMENTS = gql`
   query getRecipeComments($id: String!) {
     findRecipeCommentaries(id: $id) {
+      id
+      recipeId
+      creatorId
+      creatorPhoto
+      creatorName
+      content
+      qtdLikes
+      likes
+      createdAt
+    }
+  }
+`;
+
+export const GET_USER_COMMENTS = gql`
+  query getUserComments($id: String!) {
+    findUserCommentaries(id: $id) {
       id
       recipeId
       creatorId

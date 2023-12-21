@@ -101,3 +101,19 @@ export const CREATE_COMMENT = gql`
     }
   }
 `;
+
+export const LIKE_RECIPE = gql`
+  mutation ($userId: String!, $recipeId: String!) {
+    likeRecipe(likeRecipe: { userId: $userId, recipeId: $recipeId }) {
+      recipeId
+    }
+  }
+`;
+
+export const DISLIKE_RECIPE = gql`
+  mutation ($userId: String!, $recipeId: String!) {
+    dislikeRecipe(dislikeRecipe: { userId: $userId, recipeId: $recipeId }) {
+      recipeId
+    }
+  }
+`;

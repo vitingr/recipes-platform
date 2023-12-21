@@ -14,7 +14,7 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { TiStarFullOutline } from "react-icons/ti";
 
-const page = () => {
+const MainProfile = ({ children } : { children: React.ReactNode }) => {
   // Get User Data
   const { data: session, status } = useSession();
   const { data } = infoUser();
@@ -120,27 +120,14 @@ const page = () => {
           </div>
 
           <div className="w-full">
-            <h1 className="mb-16 mt-4 text-2xl font-semibold cursor-default transition-all duration-200 hover:text-[#f1656a]">
-              Minhas Receitas Criadas
-            </h1>
-            <div className="flex flex-wrap gap-6 w-full">
-              {createdRecipes &&
-                createdRecipes.getUserRecipes &&
-                createdRecipes.getUserRecipes.map(
-                  (recipe: RecipeProps, index: number) => (
-                    <ProfileRecipe recipe={recipe} key={index} />
-                  )
-                )}
-            </div>
+            {children}
           </div>
         </div>
       </div>
 
-      {/* Configurações de Popups */}
-
-      {editBio ? <UserBio editState={setEditBio} /> : <></>}
+      {editBio && <UserBio editState={setEditBio} />}
     </div>
   );
 };
 
-export default page;
+export default MainProfile;
