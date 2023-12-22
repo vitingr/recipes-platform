@@ -14,7 +14,11 @@ import { MdWhatsapp, MdFacebook } from "react-icons/md";
 import { AiOutlineInstagram, AiOutlineLink } from "react-icons/ai";
 import ToastMessage from "@/components/config/ToastMessage";
 import { toast } from "react-toastify";
-import { CREATE_COMMENT } from "@/graphql/mutations";
+import {
+  CREATE_COMMENT,
+  DISLIKE_RECIPE,
+  LIKE_RECIPE,
+} from "@/graphql/mutations";
 import Comment from "@/components/Comment";
 import { CommentProps } from "@/types";
 import { TiStarOutline, TiStarFullOutline } from "react-icons/ti";
@@ -28,6 +32,10 @@ const page = () => {
   const query = pathname[2];
 
   const [comment, setComment] = useState<string>("");
+
+  // Like and Dislike Recipe Query
+  const [likeRecipe] = useMutation(LIKE_RECIPE);
+  const [dislikeRecipe] = useMutation(DISLIKE_RECIPE);
 
   // Get Recipe Data Query
   const {
@@ -69,6 +77,7 @@ const page = () => {
           },
         });
         await refetchComments();
+        setComment("");
         toast.success("Seu comentário foi adicionado à essa receita");
       } else {
         toast.error("É necessário digitar algo para publicar um comentário");
@@ -77,6 +86,34 @@ const page = () => {
       toast.error(
         "Não foi possível adicionar o comentário, tente novamente mais tarde."
       );
+    }
+  };
+
+  const handleLikeRecipe = async () => {
+    try {
+      await likeRecipe({
+        variables: {
+          userId: data.getUser.id,
+          recipeId: recipeData.recipe.id,
+        },
+      });
+      await refetchRecipe();
+    } catch (error) {
+      toast.error("Não foi possível favoritar essa receita!");
+    }
+  };
+
+  const handleDislikeRecipe = async () => {
+    try {
+      await dislikeRecipe({
+        variables: {
+          userId: data.getUser.id,
+          recipeId: recipeData.recipe.id,
+        },
+      });
+      await refetchRecipe();
+    } catch (error) {
+      toast.error("Não foi possível remover essa receita dos salvos!");
     }
   };
 
@@ -136,9 +173,27 @@ const page = () => {
         </div>
         <div className="flex items-center">
           {recipeData.recipe.qtdLikes === 0 ? (
-            <TiStarOutline size={25} className="gray-icon cursor-pointer" />
+            <TiStarOutline
+              size={25}
+              className="gray-icon cursor-pointer"
+              onClick={async () => {
+                await handleLikeRecipe();
+              }}
+            />
           ) : (
-            <TiStarFullOutline size={25} className="gold-icon cursor-pointer" />
+            <>
+              {recipeData.recipe &&
+                recipeData.recipe.likes &&
+                recipeData.recipe.likes.includes(data.getUser.id) && (
+                  <TiStarFullOutline
+                    size={25}
+                    className="gold-icon cursor-pointer"
+                    onClick={async () => {
+                      await handleDislikeRecipe();
+                    }}
+                  />
+                )}
+            </>
           )}
         </div>
       </section>
@@ -153,7 +208,13 @@ const page = () => {
             height={150}
             className="w-full h-full max-w-[100px] max-h-[100px] rounded-lg cursor-zoom-in transition-all duration-300 hover:scale-105"
           />
-          <p className="text-justify text-[#717171]">{recipeData.recipe.description} Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum impedit accusantium explicabo voluptas cupiditate vero! Reprehenderit voluptas enim, sapiente cumque similique in quidem. Atque asperiores minus incidunt sed a aspernatur.</p>
+          <p className="text-justify text-[#717171]">
+            {recipeData.recipe.description} Lorem ipsum dolor sit amet
+            consectetur adipisicing elit. Rerum impedit accusantium explicabo
+            voluptas cupiditate vero! Reprehenderit voluptas enim, sapiente
+            cumque similique in quidem. Atque asperiores minus incidunt sed a
+            aspernatur.
+          </p>
         </div>
       </section>
 
@@ -221,7 +282,6 @@ const page = () => {
           onSubmit={async (e: React.SyntheticEvent) => {
             e.preventDefault();
             await createNewComment();
-            setComment("");
           }}
           className="w-full"
         >
@@ -230,6 +290,7 @@ const page = () => {
             id="comment"
             cols={5}
             rows={2}
+            value={comment}
             className="resize-none mt-[3em] w-full outline-none py-3 px-6 border border-neutral-200 rounded-xl text-[#717171] mb-8"
             autoComplete="off"
             placeholder="Digite algo sobre essa receita"

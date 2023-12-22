@@ -86,9 +86,11 @@ const MainProfile = ({ children } : { children: React.ReactNode }) => {
                   Adicionar Receita
                 </li>
               </Link>
-              <li className="text-sm text-[#717171] cursor-pointer">
-                Receitas criadas
-              </li>
+              <Link href={"/profile/createdRecipes"}>
+                <li className="text-sm text-[#717171] cursor-pointer">
+                  Receitas criadas
+                </li>
+              </Link>
               <li className="text-sm text-[#717171] cursor-pointer">
                 Compartilhar Perfil
               </li>

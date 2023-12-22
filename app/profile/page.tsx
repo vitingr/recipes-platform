@@ -120,18 +120,7 @@ const page = () => {
           </div>
 
           <div className="w-full">
-            <h1 className="mb-16 mt-4 text-2xl font-semibold cursor-default transition-all duration-200 hover:text-[#f1656a]">
-              Minhas Receitas Criadas
-            </h1>
-            <div className="flex flex-wrap gap-6 w-full">
-              {createdRecipes &&
-                createdRecipes.getUserRecipes &&
-                createdRecipes.getUserRecipes.map(
-                  (recipe: RecipeProps, index: number) => (
-                    <ProfileRecipe recipe={recipe} key={index} />
-                  )
-                )}
-            </div>
+            {/* Info do perfil */}
           </div>
         </div>
       </div>

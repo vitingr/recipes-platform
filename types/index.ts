@@ -31,6 +31,7 @@ export interface RecipeProps {
   ingredients: string[];
   methods: string[];
   photo: string;
+  likes: string[];
   qtdLikes: number;
   creatorId: string;
   creatorName: string;

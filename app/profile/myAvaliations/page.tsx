@@ -3,10 +3,10 @@
 import Comment from "@/components/Comment";
 import MainProfile from "@/components/Profile/MainProfile";
 import { GET_USER_COMMENTS } from "@/graphql/queries";
+import { CommentProps } from "@/types";
 import { infoUser } from "@/utils/common/userContext";
 import { useQuery } from "@apollo/client";
 import { useSession } from "next-auth/react";
-import { CommentProps } from "postcss";
 import React, { useEffect } from "react";
 
 const page = () => {
@@ -36,16 +36,15 @@ const page = () => {
   return (
     <>
       <MainProfile>
-        <h1 className="mb-16 mt-4 text-2xl font-semibold cursor-default transition-all duration-200 hover:text-[#f1656a]">
+        <h1 className="mb-16 mt-4 text-2xl font-semibold cursor-default transition-all duration-300 hover:text-[#f1656a]">
           Meus Comentários e Avaliações
         </h1>
         <div className="flex flex-wrap gap-6 w-full">
           {avaliationsData &&
             avaliationsData.findUserCommentaries &&
             avaliationsData.findUserCommentaries.map(
-              (userComment: CommentProps | any, index: number) => (
+              (userComment: CommentProps, index: number) => (
                 <Comment comment={userComment} key={index} />
-                // <p>{JSON.stringify(comment)}</p>
               )
             )}
         </div>

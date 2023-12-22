@@ -19,7 +19,6 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
   const {
     data: userData,
     loading: userLoading,
-    error: userError,
     refetch: refetchUser,
   } = useQuery(GET_USER, {
     variables: {

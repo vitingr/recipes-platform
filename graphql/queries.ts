@@ -38,7 +38,7 @@ export const GET_RECIPE_DATA = gql`
     recipe(id: $id) {
       id
       title
-      ingredients
+      ingredients   
       methods
       photo
       qtdLikes
