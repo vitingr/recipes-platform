@@ -201,14 +201,14 @@ const page = () => {
       </section>
 
       <section className="mt-[3em]">
-        <h1 className="text-xl font-semibold mt-[2em]">Informações</h1>
-        <div className="flex justify-between w-full gap-4 mt-2">
+        <h1 className="text-xl font-semibold mt-[2em] w-full py-2 bg-[#fafafa] border border-neutral-200 px-4">Informações</h1>
+        <div className="flex justify-between w-full gap-4 mt-4">
           <Image
             src={recipeData.recipe.photo}
             alt="Recipe Photo"
             width={200}
             height={200}
-            className="w-full h-full max-w-[150px] max-h-[150px] rounded-lg cursor-zoom-in transition-all duration-300 hover:scale-105"
+            className="w-full h-full max-w-[150px] max-h-[150px] rounded-lg cursor-zoom-in transition-all duration-300 hover:scale-105 selection:bg-transparent"
             onClick={() => setExpandImage(!expandImage)}
           />
           <p className="text-justify text-[#717171]">
@@ -225,7 +225,7 @@ const page = () => {
       </section>
 
       <section className="mt-[1em]">
-        <h1 className="text-xl font-semibold mt-[2em]">Ingredientes</h1>
+        <h1 className="text-xl font-semibold mt-[2em] w-full py-2 bg-[#fafafa] border border-neutral-200 px-4">Ingredientes</h1>
         <div className="flex flex-col mt-4">
           {recipeData.recipe.ingredients.map(
             (ingredient: string, index: number) => (
@@ -237,7 +237,7 @@ const page = () => {
           )}
         </div>
 
-        <h1 className="text-xl font-semibold mt-[2em]">Modo de Preparo</h1>
+        <h1 className="text-xl font-semibold mt-[2em] w-full py-2 bg-[#fafafa] border border-neutral-200 px-4">Modo de Preparo</h1>
         <div className="flex flex-col mt-4 max-w-[500px]">
           {recipeData.recipe.methods.map((step: string, index: number) => (
             <div
@@ -254,7 +254,7 @@ const page = () => {
       </section>
 
       <section className="mt-[5em] flex gap-4 justify-between">
-        <h1 className="text-xl font-semibold w-full">
+        <h1 className="text-xl font-semibold w-full ">
           Compartilhe essa Receita
         </h1>
         <div className="flex gap-4 w-full justify-end">

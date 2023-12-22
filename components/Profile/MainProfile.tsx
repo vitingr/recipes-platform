@@ -69,9 +69,9 @@ const MainProfile = ({ children }: { children: React.ReactNode }) => {
                 {session?.user?.name}
               </h1>
               <h4 className="text-sm text-[#717171]">{session?.user?.email}</h4>
-              <div className="rounded-full px-2 py-1 text-sm border border-[#f1656a] text-[#f1656a] text-center mt-4 max-w-[100px] cursor-pointer transitiona-all duration-300 hover:bg-[#f1656a] hover:text-white">
+              <Link href={"/profile"} className="rounded-full px-2 py-1 text-sm border border-[#f1656a] text-[#f1656a] text-center mt-4 max-w-[100px] cursor-pointer transitiona-all duration-300 hover:bg-[#f1656a] hover:text-white">
                 Editar
-              </div>
+              </Link>
             </div>
 
             <ul className="mt-6 list-none flex flex-col gap-3 pb-6 border-b border-neutral-200">

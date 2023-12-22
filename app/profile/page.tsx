@@ -2,6 +2,7 @@
 
 import Popup from "@/components/Popup";
 import UserBio from "@/components/Popups/UserBio";
+import MainProfile from "@/components/Profile/MainProfile";
 import ProfileRecipe from "@/components/Recipe/ProfileRecipe";
 import ToastMessage from "@/components/config/ToastMessage";
 import { GET_USER_CREATED_RECIPES } from "@/graphql/queries";
@@ -13,127 +14,87 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { TiStarFullOutline } from "react-icons/ti";
+import { toast } from "react-toastify";
 
 const page = () => {
-  // Get User Data
   const { data: session, status } = useSession();
   const { data } = infoUser();
 
-  const [editBio, setEditBio] = useState<boolean>(false);
+  const [bio, setBio] = useState<string>("");
 
-  // Get Created Recipes
-  const { data: createdRecipes, loading: createdRecipesLoading } = useQuery(
-    GET_USER_CREATED_RECIPES,
-    {
-      variables: {
-        id: "657b03d99cc86de6da90fc65" as string,
-      },
+  // Edit User Profile Info Function
+  const editProfileInfo = async () => {
+    try {
+      console.log("Profile edited");
+    } catch (error) {
+      toast.error(
+        "Não foi possível editar as informações do Perfil do usuário!"
+      );
     }
-  );
-
-  useEffect(() => {
-    if (
-      session?.user?.email !== undefined &&
-      status === "authenticated" &&
-      createdRecipesLoading === false
-    ) {
-      return;
-    }
-  }, [session, createdRecipesLoading]);
+  };
 
   return (
-    <div className="w-full sm:p-[5%] p-[2%] max-w-[1850px] flex flex-col items-center">
+    <MainProfile>
       <ToastMessage />
-      <div className="border border-neutral-200 shadow-sm max-w-[1850px] w-full rounded-xl">
-        {/* Profile background */}
-        <div
-          style={{
-            backgroundImage: `url("https://static.vecteezy.com/system/resources/previews/006/879/154/large_2x/abstract-and-pattern-background-illustration-with-gradient-color-of-violet-this-luxurious-background-is-suitable-for-presentation-poster-wallpaper-personal-website-ui-and-ux-experiences-etc-free-photo.jpg")`,
+      <h1 className="mb-8 mt-4 text-2xl font-semibold cursor-default transition-all duration-300 hover:text-[#f1656a]">
+        Informações Pessoais
+      </h1>
+      <div className="w-full flex justify-center items-center">
+        <form
+          onSubmit={async (e: React.SyntheticEvent) => {
+            e.preventDefault();
+            await editProfileInfo();
           }}
-          className="w-full h-[300px] bg-cover bg-no-repeat rounded-t-xl bg-center"
-        ></div>
-
-        {/* Profile Info */}
-        <div className="flex gap-24 p-6 bg-white">
-          {/* Profile Settings */}
-          <div className="w-full max-w-[300px] flex flex-col pl-14">
-            <div className="flex flex-col pb-6 border-b border-neutral-200">
-              <Image
-                src={session?.user?.image || ""}
-                alt="Profile image"
-                width={100}
-                height={100}
-                className="rounded-lg selection:bg-transparent -mt-20"
+          className="flex justify-center flex-wrap gap-2 w-full"
+        >
+          <div className="w-full flex justify-between gap-6">
+            <div className="w-full flex flex-col">
+              <label htmlFor="firstname">Primeiro nome</label>
+              <input
+                type="text"
+                name="firstname"
+                id="firstname"
+                className="w-full outline-none pl-4 pr-4 pt-2 pb-2 border border-neutral-200 rounded-lg mt-1 text-[#717171] mb-8"
+                autoComplete="off"
+                placeholder="Seu primeiro nome"
               />
-              <h1 className="text-lg font-semibold mt-4">
-                {session?.user?.name}
-              </h1>
-              <h4 className="text-sm text-[#717171]">{session?.user?.email}</h4>
-              <div className="rounded-full px-2 py-1 text-sm border border-[#f1656a] text-[#f1656a] text-center mt-4 max-w-[100px] cursor-pointer transitiona-all duration-300 hover:bg-[#f1656a] hover:text-white">
-                Editar
-              </div>
             </div>
 
-            <ul className="mt-6 list-none flex flex-col gap-3 pb-6 border-b border-neutral-200">
-              <li
-                className="text-sm text-[#717171] cursor-pointer"
-                onClick={() => setEditBio(true)}
-              >
-                Adicionar Bio
-              </li>
-              <Link
-                href={"/home/createRecipe"}
-                className="text-sm text-[#717171] cursor-pointer"
-              >
-                Adicionar Receita
-              </Link>
-              <Link
-                href={"/profile/createdRecipes"}
-                className="text-sm text-[#717171] cursor-pointer"
-              >
-                Receitas criadas
-              </Link>
-              <li className="text-sm text-[#717171] cursor-pointer">
-                Compartilhar Perfil
-              </li>
-            </ul>
-
-            <div className="mt-6">
-              <h1 className="font-semibold">Últimas curtidas</h1>
-              <ul className="list-none flex flex-col gap-3 mt-6">
-                <li className="text-sm text-[#717171] cursor-pointer">
-                  Adicionar Bio
-                </li>
-                <Link
-                  href={"/home/createRecipe"}
-                  className="text-sm text-[#717171] cursor-pointer"
-                >
-                  Adicionar Receita
-                </Link>
-                <Link
-                  href={"/profile/createdRecipes"}
-                  className="text-sm text-[#717171] cursor-pointer"
-                >
-                  Receitas criadas
-                </Link>
-                <Link
-                  href={"/profile/myAvaliations"}
-                  className="text-sm text-[#717171] cursor-pointer"
-                >
-                  Minhas avaliações
-                </Link>
-              </ul>
+            <div className="w-full flex flex-col">
+              <label htmlFor="lastname">Sobrenome</label>
+              <input
+                type="text"
+                name="lastname"
+                id="lastname"
+                className="w-full outline-none pl-4 pr-4 pt-2 pb-2 border border-neutral-200 rounded-lg mt-1 text-[#717171] mb-8"
+                autoComplete="off"
+                placeholder="Seu sobrenome"
+              />
             </div>
           </div>
 
-          <div className="w-full">{/* Info do perfil */}</div>
-        </div>
+          <div className="w-full">
+            <label htmlFor="bio">Bio do Perfil</label>
+            <textarea
+              name="bio"
+              id="bio"
+              cols={32}
+              rows={10}
+              className="w-full outline-none pl-4 pr-4 pt-2 pb-2 border border-neutral-300 rounded-lg text-[#717171] mt-1  mb-8 resize-none"
+              autoComplete="off"
+              value={data.getUser.bio}
+              onChange={(e) => setBio(e.target.value)}
+              placeholder="Digite algo relevante sobre você"
+              defaultValue={data.getUser.bio}
+            ></textarea>
+          </div>
+
+          <button className="w-full bg-[#f1656a] text-white py-3 px-4 rounded-xl max-w-[800px]">
+            Editar Informações
+          </button>
+        </form>
       </div>
-
-      {/* Configurações de Popups */}
-
-      {editBio ? <UserBio editState={setEditBio} /> : <></>}
-    </div>
+    </MainProfile>
   );
 };
 
