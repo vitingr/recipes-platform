@@ -14,7 +14,7 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { TiStarFullOutline } from "react-icons/ti";
 
-const MainProfile = ({ children } : { children: React.ReactNode }) => {
+const MainProfile = ({ children }: { children: React.ReactNode }) => {
   // Get User Data
   const { data: session, status } = useSession();
   const { data } = infoUser();
@@ -81,19 +81,21 @@ const MainProfile = ({ children } : { children: React.ReactNode }) => {
               >
                 Adicionar Bio
               </li>
-              <Link href={"/home/createRecipe"}>
-                <li className="text-sm text-[#717171] cursor-pointer">
-                  Adicionar Receita
-                </li>
+              <Link
+                href={"/home/createRecipe"}
+                className="text-sm text-[#717171] cursor-pointer"
+              >
+                Adicionar Receita
               </Link>
-              <Link href={"/profile/createdRecipes"}>
-                <li className="text-sm text-[#717171] cursor-pointer">
-                  Receitas criadas
-                </li>
+              <Link
+                href={"/profile/createdRecipes"}
+                className="text-sm text-[#717171] cursor-pointer"
+              >
+                Receitas criadas
               </Link>
-              <li className="text-sm text-[#717171] cursor-pointer">
-                Compartilhar Perfil
-              </li>
+              <Link href={"/profile/favouritesRecipes"} className="text-sm text-[#717171] cursor-pointer">
+                Receitas Favoritas
+              </Link>
             </ul>
 
             <div className="mt-6">
@@ -102,28 +104,29 @@ const MainProfile = ({ children } : { children: React.ReactNode }) => {
                 <li className="text-sm text-[#717171] cursor-pointer">
                   Adicionar Bio
                 </li>
-                <Link href={"/home/createRecipe"}>
-                  <li className="text-sm text-[#717171] cursor-pointer">
-                    Adicionar Receita
-                  </li>
+                <Link
+                  href={"/home/createRecipe"}
+                  className="text-sm text-[#717171] cursor-pointer"
+                >
+                  Adicionar Receita
                 </Link>
-                <Link href={"/profile/createdRecipes"}>
-                  <li className="text-sm text-[#717171] cursor-pointer">
-                    Receitas criadas
-                  </li>
+                <Link
+                  href={"/profile/myAvaliations"}
+                  className="text-sm text-[#717171] cursor-pointer"
+                >
+                  Minhas avaliações
                 </Link>
-                <Link href={"/profile/myAvaliations"}>
-                  <li className="text-sm text-[#717171] cursor-pointer">
-                    Minhas avaliações
-                  </li>
+                <Link
+                  href={"/profile"}
+                  className="text-sm text-[#717171] cursor-pointer"
+                >
+                  Compartilhar meu Perfil
                 </Link>
               </ul>
             </div>
           </div>
 
-          <div className="w-full">
-            {children}
-          </div>
+          <div className="w-full">{children}</div>
         </div>
       </div>
 

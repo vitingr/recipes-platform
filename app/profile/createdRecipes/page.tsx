@@ -34,34 +34,21 @@ const page = () => {
   }, [recipeLoading]);
 
   return (
-    <>
-      <MainProfile>
-        <h1 className="mb-16 mt-4 text-2xl font-semibold cursor-default transition-all duration-300 hover:text-[#f1656a]">
-          Minhas Receitas Criadas
-        </h1>
-        <div className="flex flex-wrap gap-6 w-full">
-          {recipeData &&
-            recipeData.getUserRecipes &&
-            recipeData.getUserRecipes.map(
+    recipeData &&
+    recipeData.getUserRecipes && (
+        <MainProfile>
+          <h1 className="mb-16 mt-4 text-2xl font-semibold cursor-default transition-all duration-300 hover:text-[#f1656a]">
+            Minhas Receitas Criadas
+          </h1>
+          <div className="flex flex-wrap gap-6 w-full">
+            {recipeData.getUserRecipes.map(
               (recipe: RecipeProps, index: number) => (
                 <ProfileRecipe recipe={recipe} key={index} />
-                // <div key={index}>
-                //   {recipe.qtdLikes > 0 ? (
-                //     <>
-                //       {recipe.likes &&
-                //         recipe.likes.includes(data.getUser.id) && (
-                //           <ProfileRecipe recipe={recipe} />
-                //         )}
-                //     </>
-                //   ) : (
-                //     <></>
-                //   )}
-                // </div>
               )
             )}
-        </div>
-      </MainProfile>
-    </>
+          </div>
+        </MainProfile>
+    )
   );
 };
 

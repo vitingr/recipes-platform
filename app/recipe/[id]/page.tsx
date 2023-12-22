@@ -22,6 +22,7 @@ import {
 import Comment from "@/components/Comment";
 import { CommentProps } from "@/types";
 import { TiStarOutline, TiStarFullOutline } from "react-icons/ti";
+import ExpandImage from "@/components/ExpandImage";
 
 const page = () => {
   // Get User Data
@@ -32,6 +33,7 @@ const page = () => {
   const query = pathname[2];
 
   const [comment, setComment] = useState<string>("");
+  const [expandImage, setExpandImage] = useState<boolean>(false)
 
   // Like and Dislike Recipe Query
   const [likeRecipe] = useMutation(LIKE_RECIPE);
@@ -204,9 +206,10 @@ const page = () => {
           <Image
             src={recipeData.recipe.photo}
             alt="Recipe Photo"
-            width={150}
-            height={150}
-            className="w-full h-full max-w-[100px] max-h-[100px] rounded-lg cursor-zoom-in transition-all duration-300 hover:scale-105"
+            width={200}
+            height={200}
+            className="w-full h-full max-w-[150px] max-h-[150px] rounded-lg cursor-zoom-in transition-all duration-300 hover:scale-105"
+            onClick={() => setExpandImage(!expandImage)}
           />
           <p className="text-justify text-[#717171]">
             {recipeData.recipe.description} Lorem ipsum dolor sit amet
@@ -215,6 +218,9 @@ const page = () => {
             cumque similique in quidem. Atque asperiores minus incidunt sed a
             aspernatur.
           </p>
+          {expandImage && (
+            <ExpandImage image={recipeData.recipe.photo} state={setExpandImage} />
+          )}
         </div>
       </section>
 

@@ -1,17 +1,8 @@
+import { PopupProps } from "@/types";
 import React from "react";
 import { IoCloseOutline } from "react-icons/io5";
 
-const Popup = ({
-  children,
-  title,
-  state,
-  handleSubmit,
-}: {
-  children: React.ReactNode;
-  title: string;
-  state?: any;
-  handleSubmit?: () => void;
-}) => {
+const Popup = ({ children, title, state, handleSubmit }: PopupProps) => {
   return (
     <div className="popup-wrapper">
       <div className="glassmorphism">

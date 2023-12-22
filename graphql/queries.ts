@@ -28,6 +28,7 @@ export const GET_ALL_RECIPES = gql`
       methods
       photo
       qtdLikes
+      likes
       creatorId
     }
   }
@@ -42,6 +43,7 @@ export const GET_RECIPE_DATA = gql`
       methods
       photo
       qtdLikes
+      likes
       creatorId
       creatorName
       creatorPhoto

@@ -61,3 +61,10 @@ export interface CommentProps {
   likes?: string[];
   createdAt: Date;
 }
+
+export interface PopupProps {
+  children: React.ReactNode;
+  title: string;
+  state?: any;
+  handleSubmit?: () => void;
+}

@@ -34,7 +34,6 @@ const page = () => {
   }, [session, status, avaliationsLoading]);
 
   return (
-    <>
       <MainProfile>
         <h1 className="mb-16 mt-4 text-2xl font-semibold cursor-default transition-all duration-300 hover:text-[#f1656a]">
           Meus Comentários e Avaliações
@@ -49,7 +48,6 @@ const page = () => {
             )}
         </div>
       </MainProfile>
-    </>
   );
 };
 

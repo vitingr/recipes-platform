@@ -81,14 +81,18 @@ const page = () => {
               >
                 Adicionar Bio
               </li>
-              <Link href={"/home/createRecipe"}>
-                <li className="text-sm text-[#717171] cursor-pointer">
-                  Adicionar Receita
-                </li>
+              <Link
+                href={"/home/createRecipe"}
+                className="text-sm text-[#717171] cursor-pointer"
+              >
+                Adicionar Receita
               </Link>
-              <li className="text-sm text-[#717171] cursor-pointer">
+              <Link
+                href={"/profile/createdRecipes"}
+                className="text-sm text-[#717171] cursor-pointer"
+              >
                 Receitas criadas
-              </li>
+              </Link>
               <li className="text-sm text-[#717171] cursor-pointer">
                 Compartilhar Perfil
               </li>
@@ -100,28 +104,29 @@ const page = () => {
                 <li className="text-sm text-[#717171] cursor-pointer">
                   Adicionar Bio
                 </li>
-                <Link href={"/home/createRecipe"}>
-                  <li className="text-sm text-[#717171] cursor-pointer">
-                    Adicionar Receita
-                  </li>
+                <Link
+                  href={"/home/createRecipe"}
+                  className="text-sm text-[#717171] cursor-pointer"
+                >
+                  Adicionar Receita
                 </Link>
-                <Link href={"/profile/createdRecipes"}>
-                  <li className="text-sm text-[#717171] cursor-pointer">
-                    Receitas criadas
-                  </li>
+                <Link
+                  href={"/profile/createdRecipes"}
+                  className="text-sm text-[#717171] cursor-pointer"
+                >
+                  Receitas criadas
                 </Link>
-                <Link href={"/profile/myAvaliations"}>
-                  <li className="text-sm text-[#717171] cursor-pointer">
-                    Minhas avaliações
-                  </li>
+                <Link
+                  href={"/profile/myAvaliations"}
+                  className="text-sm text-[#717171] cursor-pointer"
+                >
+                  Minhas avaliações
                 </Link>
               </ul>
             </div>
           </div>
 
-          <div className="w-full">
-            {/* Info do perfil */}
-          </div>
+          <div className="w-full">{/* Info do perfil */}</div>
         </div>
       </div>
 
