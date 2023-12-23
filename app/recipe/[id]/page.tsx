@@ -229,7 +229,7 @@ const page = () => {
         <div className="flex flex-col mt-4">
           {recipeData.recipe.ingredients.map(
             (ingredient: string, index: number) => (
-              <div key={index} className="flex gap-2">
+              <div key={index} className="flex gap-2 py-1">
                 <BiBowlHot size={17} className="gray-icon" />
                 <p className="text-[#717171]">{ingredient}</p>
               </div>

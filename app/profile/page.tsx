@@ -51,6 +51,7 @@ const page = () => {
             <div className="w-full flex flex-col">
               <label htmlFor="firstname">Primeiro nome</label>
               <input
+                defaultValue={data.getUser.firstname}
                 type="text"
                 name="firstname"
                 id="firstname"
@@ -63,6 +64,7 @@ const page = () => {
             <div className="w-full flex flex-col">
               <label htmlFor="lastname">Sobrenome</label>
               <input
+                defaultValue={data.getUser.lastname}
                 type="text"
                 name="lastname"
                 id="lastname"
@@ -82,10 +84,9 @@ const page = () => {
               rows={10}
               className="w-full outline-none pl-4 pr-4 pt-2 pb-2 border border-neutral-300 rounded-lg text-[#717171] mt-1  mb-8 resize-none"
               autoComplete="off"
-              value={data.getUser.bio}
+              defaultValue={data.getUser.bio}
               onChange={(e) => setBio(e.target.value)}
               placeholder="Digite algo relevante sobre você"
-              defaultValue={data.getUser.bio}
             ></textarea>
           </div>
 

@@ -30,7 +30,7 @@ const UploadImage = ({ setState, currentFoto, text }: UploadProps) => {
   };
 
   return (
-    <Popup title="Enviar Imagem">
+    <Popup title="Enviar Imagem" state={setState}>
       <div className="w-full h-[300px] border border-dashed border-neutral-300 p-6 mt-10 flex flex-col items-center justify-center">
         {!image ? (
           <label htmlFor="image">{text}</label>
