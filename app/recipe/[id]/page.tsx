@@ -33,7 +33,7 @@ const page = () => {
   const query = pathname[2];
 
   const [comment, setComment] = useState<string>("");
-  const [expandImage, setExpandImage] = useState<boolean>(false)
+  const [expandImage, setExpandImage] = useState<boolean>(false);
 
   // Like and Dislike Recipe Query
   const [likeRecipe] = useMutation(LIKE_RECIPE);
@@ -201,8 +201,10 @@ const page = () => {
       </section>
 
       <section className="mt-[3em]">
-        <h1 className="text-xl font-semibold mt-[2em] w-full py-2 bg-[#fafafa] border border-neutral-200 px-4">Informações</h1>
-        <div className="flex justify-between w-full gap-4 mt-4">
+        <h1 className="text-xl font-semibold mt-[2em] w-full py-2 bg-[#fafafa] border border-neutral-200 px-4">
+          Informações
+        </h1>
+        <div className="flex justify-between w-full gap-4 mt-6">
           <Image
             src={recipeData.recipe.photo}
             alt="Recipe Photo"
@@ -219,37 +221,51 @@ const page = () => {
             aspernatur.
           </p>
           {expandImage && (
-            <ExpandImage image={recipeData.recipe.photo} state={setExpandImage} />
+            <ExpandImage
+              image={recipeData.recipe.photo}
+              state={setExpandImage}
+            />
           )}
         </div>
       </section>
 
-      <section className="mt-[1em]">
-        <h1 className="text-xl font-semibold mt-[2em] w-full py-2 bg-[#fafafa] border border-neutral-200 px-4">Ingredientes</h1>
-        <div className="flex flex-col mt-4">
-          {recipeData.recipe.ingredients.map(
-            (ingredient: string, index: number) => (
-              <div key={index} className="flex gap-2 py-1">
-                <BiBowlHot size={17} className="gray-icon" />
-                <p className="text-[#717171]">{ingredient}</p>
+      <section className="mt-[1em] flex gap-6 justify-between">
+        <div className="w-full">
+          <h1 className="text-xl font-semibold mt-[2em] w-full py-2 bg-[#fafafa] border border-neutral-200 px-4">
+            Modo de Preparo
+          </h1>
+          <div className="flex flex-col mt-4 max-w-[500px]">
+            {recipeData.recipe.methods.map((step: string, index: number) => (
+              <div
+                key={index}
+                className="py-4 mb-2 border-b border-neutral-100 flex gap-3 items-center w-full"
+              >
+                <span className="rounded-full border border-[#f1656a] text-[#f1656a] w-5 h-5 flex items-center justify-center text-xs cursor-grab">
+                  {index}
+                </span>
+                <p className="text-sm text-[#717171]">{step}</p>
               </div>
-            )
-          )}
+            ))}
+          </div>
         </div>
-
-        <h1 className="text-xl font-semibold mt-[2em] w-full py-2 bg-[#fafafa] border border-neutral-200 px-4">Modo de Preparo</h1>
-        <div className="flex flex-col mt-4 max-w-[500px]">
-          {recipeData.recipe.methods.map((step: string, index: number) => (
-            <div
-              key={index}
-              className="py-4 mb-2 border-b border-neutral-100 flex gap-3 items-center"
-            >
-              <span className="rounded-full border border-[#f1656a] text-[#f1656a] w-5 h-5 flex items-center justify-center text-xs cursor-grab">
-                {index}
-              </span>
-              <p className="text-sm text-[#717171]">{step}</p>
-            </div>
-          ))}
+        <div className="w-full">
+          <h1 className="text-xl font-semibold mt-[2em] w-full py-2 bg-[#fafafa] border border-neutral-200 px-4">
+            Ingredientes
+          </h1>
+          <div className="flex flex-col mt-4 gap-2">
+            {recipeData.recipe.ingredients.map(
+              (ingredient: string, index: number) => (
+                <div key={index} className="w-full">
+                  {ingredient != "" && (
+                    <div className="flex gap-2 py-2 mb-2 border-b border-neutral-100 w-full">
+                      <BiBowlHot size={17} className="gray-icon" />
+                      <p className="text-[#717171] text-sm">{ingredient}</p>
+                    </div>
+                  )}
+                </div>
+              )
+            )}
+          </div>
         </div>
       </section>
 

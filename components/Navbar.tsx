@@ -17,6 +17,8 @@ import { RiShakeHandsLine } from "react-icons/ri";
 import { BsTicketPerforated } from "react-icons/bs";
 import { VscSignOut } from "react-icons/vsc";
 import { infoUser } from "@/utils/common/userContext";
+import { BsPerson } from "react-icons/bs";
+import { GoSearch } from "react-icons/go";
 
 const Navbar = () => {
   const { data: session } = useSession();
@@ -37,27 +39,27 @@ const Navbar = () => {
 
         <ul className="sm:flex justify-center items-center gap-16 hidden">
           <Link href={"/"}>
-            <li className="duration-300 transition-all hover:text-[#f1656a]">
+            <li className="duration-300 transition-all hover:text-[#3e3e3e] text-[#717171]">
               Início
             </li>
           </Link>
           <Link href={"/home"}>
-            <li className="duration-300 transition-all hover:text-[#f1656a]">
+            <li className="duration-300 transition-all hover:text-[#3e3e3e] text-[#717171]">
               Receitas
             </li>
           </Link>
           <Link href={"/profile/partner"}>
-            <li className="duration-300 transition-all hover:text-[#f1656a]">
+            <li className="duration-300 transition-all hover:text-[#3e3e3e] text-[#717171]">
               Seja Parceiro
             </li>
           </Link>
           <Link href={"/about"}>
-            <li className="duration-300 transition-all hover:text-[#f1656a]">
+            <li className="duration-300 transition-all hover:text-[#3e3e3e] text-[#717171]">
               Sobre
             </li>
           </Link>
           <Link href={"/"}>
-            <li className="duration-300 transition-all hover:text-[#f1656a]">
+            <li className="duration-300 transition-all hover:text-[#3e3e3e] text-[#717171]">
               Contatos
             </li>
           </Link>
@@ -65,18 +67,20 @@ const Navbar = () => {
 
         {session?.user?.email ? (
           <div className="flex gap-8 items-center">
+            <GoSearch size={22.5} className="cursor-pointer gray-icon" />
             <Link href={"/profile"}>
-              <Image
+              <BsPerson size={22.5} className="cursor-pointer gray-icon" />
+              {/* <Image
                 src={session?.user?.image || ""}
                 alt="Profile Image"
                 width={40}
                 height={40}
                 className="rounded-full cursor-pointer selection:bg-transparent"
-              />
+              /> */}
             </Link>
             <IoMenuOutline
-              size={30}
-              className="cursor-pointer"
+              size={22.5}
+              className="cursor-pointer gray-icon"
               onClick={() => setShowMenu(!showMenu)}
             />
             {/* <button onClick={() => signOut()} className='py-2 text-sm text-[#f1656a] border border-[#f1656a] rounded-xl w-[100px]'>Sair</button> */}

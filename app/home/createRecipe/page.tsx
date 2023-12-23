@@ -12,6 +12,12 @@ import { useRouter } from "next/navigation";
 import Loader from "@/components/Loader";
 import IngredientInput from "@/components/Recipe/IngredientInput";
 import Image from "next/image";
+import { RECIPE_TYPES } from "@/constants/recipe-types";
+
+type RecipeTypeProps = {
+  name: string;
+  value: string
+}
 
 const page = () => {
   // Get User Info
@@ -118,7 +124,13 @@ const page = () => {
         </h2>
         <div className="w-full flex justify-between gap-6 items-center">
           {image != "" ? (
-            <Image src={image} alt="Recipe Image" width={500} height={500} />
+            <Image
+              src={image}
+              alt="Recipe Image"
+              width={300}
+              height={235}
+              className="max-w-[300px] max-h-[235px] w-full h-full"
+            />
           ) : (
             <div
               className="w-[300px] p-6 border border-neutral-300 border-dashed h-[235px] flex justify-center items-center cursor-pointer transition-all duration-300 hover:bg-neutral-100 -mt-8"
@@ -174,34 +186,9 @@ const page = () => {
           onChange={(e) => setRecipeType(e.target.value)}
         >
           <option value="">Selecione o tipo da receita</option>
-          <option value="Açaí">Açaí</option>
-          <option value="Alemã">Alemã</option>
-          <option value="Árabe">Árabe</option>
-          <option value="Argentina">Argentina</option>
-          <option value="Bebidas">Bebidas</option>
-          <option value="Brasileira">Brasileira</option>
-          <option value="Cafeteria">Cafeteria</option>
-          <option value="Carnes">Carnes</option>
-          <option value="Sucos">Sucos</option>
-          <option value="Chinesa">Chinesa</option>
-          <option value="Coreana">Coreana</option>
-          <option value="Dia das Crianças">Dia das Crianças</option>
-          <option value="Doces e Bolos">Doces e Bolos</option>
-          <option value="Natal">Natal</option>
-          <option value="Francesa">Francesa</option>
-          <option value="Frutos do mar">Frutos do mar</option>
-          <option value="Gourmet">Gourmet</option>
-          <option value="Italiana">Italiana</option>
-          <option value="Dia dos Namorados">Dia dos Namorados</option>
-          <option value="Páscoa">Páscoa</option>
-          <option value="Japonesa">Japonesa</option>
-          <option value="Lanches">Lanches</option>
-          <option value="Marmita">Marmita</option>
-          <option value="Ano Novo">Ano Novo</option>
-          <option value="Mexicana">Mexicana</option>
-          <option value="Padaria">Padaria</option>
-          <option value="Peixes">Peixes</option>
-          <option value="Halloween">Halloween</option>
+          {RECIPE_TYPES.map((type: RecipeTypeProps) => (
+            <option value={type.value}>{type.name}</option>
+          ))}
         </select>
 
         <section className="w-full flex flex-col items-center">

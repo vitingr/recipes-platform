@@ -34,7 +34,7 @@ export default function Home() {
   }, [recipeLoading]);
 
   return (
-    <div className="min-h-[62vh] sm:p-[5%] p-[2%] max-w-[1250px] w-full flex flex-col items-center">
+    <div className="min-h-[62vh] w-full flex flex-col items-center">
       <section className="w-full max-w-[750px] bg-[#f1f2f4] p-6 rounded-xl flex gap-6 sm:flex-nowrap flex-wrap">
         <Image
           src={"/assets/image.jpg"}
@@ -59,9 +59,9 @@ export default function Home() {
             Ver mais
           </div>
         </div>
-      </section> 
+      </section>
 
-      <section className="w-full mt-[10em] flex flex-col items-center">
+      <section className="w-full mt-[10em] flex flex-col items-center bg-white max-w-[1250px] p-[2%] sm:p-[5%]">
         <h1 className="text-4xl font-bold text-center">
           O que você está procurando?
         </h1>
@@ -88,8 +88,117 @@ export default function Home() {
         </form>
       </section>
 
-      <section className="pt-20 mt-20 border-t border-neutral-200 mb-20 w-full">
-        <h1>Receitas do momento</h1>
+      <section className="pt-20 mt-20 border-t border-neutral-200 mb-20 w-full max-w-[1250px] p-[2%] sm:p-[5%]">
+        <h1 className="text-3xl font-semibold">Como funciona</h1>
+        <div className="flex w-full gap-10 justify-center mt-14 sm:flex-nowrap flex-wrap">
+          <div className="p-6 rounded-xl bg-white shadow-neutral-200 shadow-sm max-w-[250px] w-full">
+            <Image
+              src={"/assets/main1.png"}
+              alt="Main Section Image"
+              width={200}
+              height={200}
+              className="max-w-[200px] max-h-[200px] w-full h-full rounded-lg selection:bg-transparent"
+            />
+            <h1 className="text-xl font-semibold text-center mt-4">
+              Escolha sua receita
+            </h1>
+            <p className="text-[#717171] text-sm text-center mt-2">
+              Escolha uma das nossas magníficas receitas
+            </p>
+          </div>
+
+          <div className="p-6 rounded-xl bg-white shadow-neutral-200 shadow-sm max-w-[250px] w-full">
+            <Image
+              src={"/assets/main2.png"}
+              alt="Main Section Image"
+              width={200}
+              height={200}
+              className="max-w-[200px] max-h-[200px] w-full h-full rounded-lg selection:bg-transparent"
+            />
+            <h1 className="text-xl font-semibold text-center mt-4">
+              Escolha sua receita
+            </h1>
+            <p className="text-[#717171] text-sm text-center mt-2">
+              Escolha uma das nossas magníficas receitas
+            </p>
+          </div>
+
+          <div className="p-6 rounded-xl bg-white shadow-neutral-200 shadow-sm max-w-[250px] w-full">
+            <Image
+              src={"/assets/main3.png"}
+              alt="Main Section Image"
+              width={200}
+              height={200}
+              className="max-w-[200px] max-h-[200px] w-full h-full rounded-lg selection:bg-transparent"
+            />
+            <h1 className="text-xl font-semibold text-center mt-4">
+              Escolha sua receita
+            </h1>
+            <p className="text-[#717171] text-sm text-center mt-2">
+              Escolha uma das nossas magníficas receitas
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <div className="custom-shape-divider-bottom-1703340920">
+        <svg
+          data-name="Layer 1"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 1200 120"
+          preserveAspectRatio="none"
+        >
+          <path
+            d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
+            className="shape-fill"
+          ></path>
+        </svg>
+      </div>
+      <section className="flex items-center justify-center pt-20 mt-20 mb-20 p-10 w-full min-h-[62vh] bg-cover bg-center bg-no-repeat bg-[#f6f6f6]">
+        <div className="w-full flex justify-center max-w-[850px] items-center sm:flex-nowrap flex-wrap">
+          <Image
+            src={"/assets/main4.png"}
+            alt="Main Image"
+            width={500}
+            height={500}
+            className="max-w-[500px] max-h-[500px] w-full h-full"
+          />
+          <div>
+            <h1 className="text-3xl font-semibold">We Deliver Anywhere in the Tri-State Area</h1>
+            <p className="mt-6 text-[#717171] text-justify">
+              Each Freshly meal is perfectly sized for 1 person to enjoy at 1
+              sitting. Our fully-prepared meals a re delivered fresh, and ready
+              to eat in 3 minutes
+            </p>
+            <p className="mt-6 italic">
+              Nossas receitas são incríveis
+            </p>
+            <div className="flex gap-6 items-center justify-between mt-10 w-full pb-14">
+              <div className="bg-[#f1656a] text-white p-3 rounded-xl w-full text-center cursor-pointer">Contact Us</div>
+              <div className="border border-neutral-600 text-neutral-600 p-3 rounded-xl w-full text-center cursor-pointer">
+                View Menu
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="shapedividers_com-4841" />
+      </section>
+      <div className="custom-shape-divider-top-1703340812 sm:block hidden">
+        <svg
+          data-name="Layer 1"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 1200 120"
+          preserveAspectRatio="none"
+        >
+          <path
+            d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
+            className="shape-fill"
+          ></path>
+        </svg>
+      </div>
+
+      <section className="pt-20 mt-20 border-t border-neutral-200 mb-20 w-full max-w-[1250px] p-[2%] sm:p-[5%]">
+        <h1 className="text-3xl font-semibold">Receitas do momento</h1>
         {recipeData && recipeData.recipes && (
           <SwiperRecipes recipes={recipeData.recipes} />
         )}

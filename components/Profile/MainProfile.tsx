@@ -42,7 +42,7 @@ const MainProfile = ({ children }: { children: React.ReactNode }) => {
   }, [session, createdRecipesLoading]);
 
   return (
-    <div className="w-full sm:p-[5%] p-[2%] max-w-[1850px] flex flex-col items-center">
+    <div className="w-full max-w-[1850px] flex flex-col items-center">
       <ToastMessage />
       <div className="border border-neutral-200 shadow-sm max-w-[1850px] w-full rounded-xl">
         {/* Profile background */}
@@ -54,7 +54,7 @@ const MainProfile = ({ children }: { children: React.ReactNode }) => {
         ></div>
 
         {/* Profile Info */}
-        <div className="flex gap-24 p-6 bg-white">
+        <div className="flex gap-12 p-6 bg-white">
           {/* Profile Settings */}
           <div className="w-full max-w-[300px] flex flex-col pl-14">
             <div className="flex flex-col pb-6 border-b border-neutral-200">
