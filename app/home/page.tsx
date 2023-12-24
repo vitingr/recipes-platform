@@ -47,11 +47,13 @@ const page = () => {
   }, [session, recipeLoading]);
 
   return recipeData?.recipes?.length > 0 ? (
-    <div className="w-full sm:p-[5%] p-[2%] max-w-[1850px] flex flex-col items-center">
+    <div className="w-full sm:p-[5%] p-[2%] max-w-[1850px] flex flex-col items-center bg-white border border-neutral-100 shadow-sm shadow-neutral-200 rounded-xl">
       <ToastMessage />
       <section className="w-full flex flex-col">
         <h1 className="text-3xl font-bold">Explorar receitas</h1>
-        <SwiperRecipes recipes={recipeData.recipes} />
+        <div className="w-full flex items-center justify-center">
+          <SwiperRecipes recipes={recipeData.recipes} />
+        </div>
       </section>
 
       <section className="w-full mt-[10em]">

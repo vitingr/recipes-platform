@@ -98,3 +98,18 @@ export const GET_USER_COMMENTS = gql`
     }
   }
 `;
+
+export const GET_ALL_USERS = gql `
+  query {
+    users {
+      id
+      name
+      firstname
+      lastname
+      email
+      partner
+      photo
+      bio
+    }
+  }
+`

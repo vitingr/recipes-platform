@@ -31,30 +31,26 @@ export default function RootLayout({
         <Provider>
           <ApolloContext>
             {isPublic && (
-              <>
-                <UserProvider>
-                  <Navbar />
-                  <main className="min-h-[62vh] pt-[80px] flex flex-col items-center w-full selection:text-white selection:bg-[#f1656a] sm:pt-[5%] sm:pb-[2.5%]">
-                    {children}
-                  </main>
-                  <Footer />
-                </UserProvider>
-              </>
+              <UserProvider>
+                <Navbar />
+                <main className="min-h-[62vh] pt-[80px] flex flex-col items-center w-full selection:text-white selection:bg-[#f1656a] sm:pt-[5%] sm:pb-[2.5%]">
+                  {children}
+                </main>
+                <Footer />
+              </UserProvider>
             )}
 
             {!isPublic && (
-              <>
-                <UserProvider>
-                  <Navbar />
-                  <main className="min-h-[62vh] pt-[80px] flex justify-center gap-12 w-full selection:text-white selection:bg-[#f1656a] bg-[#fafafa] sm:pt-[5%] sm:pb-[2.5%]">
-                    <div className="w-full flex flex-col items-center max-w-[1200px]">
-                      {children}
-                    </div>
-                    <Sidebar />
-                  </main>
-                  <Footer />
-                </UserProvider>
-              </>
+              <UserProvider>
+                <Navbar />
+                <main className="min-h-[62vh] pt-[80px] flex justify-center gap-12 w-full selection:text-white selection:bg-[#f1656a] bg-[#fafafa] sm:pt-[5%] sm:pb-[2.5%]">
+                  <div className="w-full flex flex-col items-center max-w-[1200px]">
+                    {children}
+                  </div>
+                  <Sidebar />
+                </main>
+                <Footer />
+              </UserProvider>
             )}
           </ApolloContext>
         </Provider>

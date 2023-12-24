@@ -104,7 +104,7 @@ const Navbar = () => {
 
         {showMenu ? (
           <div className="z-20 fixed right-0 bg-[#fff] shadow-md h-[650px] w-[350px] border border-[#f7f7f7] translate-y-2 transition-all rounded-lg sm:mt-[700px] mt-[650px] lg:left-[64%]">
-            <div className="p-10">
+            <div className="p-10">    
               <h1 className="text-3xl font-bold text-center">
                 Olá, {session?.user?.name}
               </h1>

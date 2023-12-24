@@ -109,7 +109,7 @@ const page = () => {
   };
 
   return data.getUser.id ? (
-    <div className="w-full sm:p-[5%] p-[2%] max-w-[1250px] flex flex-col items-center bg-white shadow-sm shadow-neutral-200 rounded-xl">
+    <div className="w-full sm:p-[5%] p-[2%] max-w-[1050px] flex flex-col items-center bg-white shadow-sm shadow-neutral-200 rounded-xl">
       <ToastMessage />
       <h1 className="text-center text-3xl font-bold">Adicionar uma Receita</h1>
       <form
@@ -136,14 +136,12 @@ const page = () => {
               className="w-[300px] p-6 border border-neutral-300 border-dashed h-[235px] flex justify-center items-center cursor-pointer transition-all duration-300 hover:bg-neutral-100 -mt-8"
               onClick={() => setSendImage(true)}
             >
-              {sendImage ? (
+              {sendImage && (
                 <UploadImage
                   currentFoto=""
                   setState={setImage}
                   text="Envie uma imagem do seu prato"
                 />
-              ) : (
-                <></>
               )}
               <p className="text-neutral-400 text-sm">
                 Adicione uma foto da sua receita
@@ -186,8 +184,8 @@ const page = () => {
           onChange={(e) => setRecipeType(e.target.value)}
         >
           <option value="">Selecione o tipo da receita</option>
-          {RECIPE_TYPES.map((type: RecipeTypeProps) => (
-            <option value={type.value}>{type.name}</option>
+          {RECIPE_TYPES.map((type: RecipeTypeProps, index: number) => (
+            <option value={type.value} key={index}>{type.name}</option>
           ))}
         </select>
 

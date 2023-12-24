@@ -26,24 +26,24 @@ const SwiperRecipes = ({ recipes }: { recipes: RecipeProps[] }) => {
         },
         640: {
           slidesPerView: 2,
-          spaceBetween: 10,
+          spaceBetween: 5,
         },
         768: {
           slidesPerView: 3,
-          spaceBetween: 20,
+          spaceBetween: 5,
         },
         1024: {
           slidesPerView: 4,
-          spaceBetween: 25,
+          spaceBetween: 5,
         },
-        1328: {
-          slidesPerView: 5,
-          spaceBetween: 30,
-        },
-        1712: {
-          slidesPerView: 6,
-          spaceBetween: 40,
-        },
+        // 1328: {
+        //   slidesPerView: 4,
+        //   spaceBetween: 5,
+        // },
+        // 1712: {
+        //   slidesPerView: 4,
+        //   spaceBetween: 5,
+        // },
       }}
     >
       {recipes.map((recipe: RecipeProps, index: number) => (

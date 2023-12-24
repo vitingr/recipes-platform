@@ -24,7 +24,7 @@ const UploadImage = ({ setState, currentFoto, text }: UploadProps) => {
     reader.readAsDataURL(file);
     reader.onload = () => {
       const result = reader.result as string;
-      setState(result);
+      setState(false);
       setImage(result);
     };
   };

@@ -40,7 +40,7 @@ export interface RecipeProps {
 }
 
 export interface UploadProps {
-  setState: (value: string) => void;
+  setState: (value: any) => void;
   currentFoto: string;
   text?: string;
 }

@@ -117,3 +117,35 @@ export const DISLIKE_RECIPE = gql`
     }
   }
 `;
+
+export const UPDATE_USER_INFO = gql`
+  mutation (
+    $id: String!
+    $firstname: String!
+    $lastname: String!
+    $name: String!
+    $bio: String!
+    $photo: String!
+  ) {
+    updateUserInfo(
+      updateUserInfo: {
+        id: $id
+        firstname: $firstname
+        lastname: $lastname
+        name: $name
+        bio: $bio
+        photo: $photo
+      }
+    ) {
+      id
+    }
+  }
+`;
+
+// export const EDIT_PROFILE_PHOTO = gql`
+//   mutation ($id: String!, photo: String!) {
+//     updateUserPhoto(updateUserPhoto: {id: id, photo: photo}) {
+//       name
+//     }
+//   }
+// `;

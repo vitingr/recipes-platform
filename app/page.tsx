@@ -61,7 +61,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="w-full mt-[10em] flex flex-col items-center bg-white max-w-[1250px] p-[2%] sm:p-[5%]">
+      <section className="w-full mt-[10em] flex flex-col items-center bg-white max-w-[1350px] p-[2%] sm:p-[5%]">
         <h1 className="text-4xl font-bold text-center">
           O que você está procurando?
         </h1>
@@ -88,10 +88,10 @@ export default function Home() {
         </form>
       </section>
 
-      <section className="pt-20 mt-20 border-t border-neutral-200 mb-20 w-full max-w-[1250px] p-[2%] sm:p-[5%]">
+      <section className="pt-20 mt-20 border-t border-neutral-200 mb-20 w-full max-w-[1350px] p-[2%] sm:p-[5%]">
         <h1 className="text-3xl font-semibold">Como funciona</h1>
         <div className="flex w-full gap-10 justify-center mt-14 sm:flex-nowrap flex-wrap">
-          <div className="p-6 rounded-xl bg-white shadow-neutral-200 shadow-sm max-w-[250px] w-full">
+          <div className="p-6 rounded-xl bg-white shadow-neutral-200 shadow-sm max-w-[250px] w-full cursor-default">
             <Image
               src={"/assets/main1.png"}
               alt="Main Section Image"
@@ -107,7 +107,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="p-6 rounded-xl bg-white shadow-neutral-200 shadow-sm max-w-[250px] w-full">
+          <div className="p-6 rounded-xl bg-white shadow-neutral-200 shadow-sm max-w-[250px] w-full cursor-default">
             <Image
               src={"/assets/main2.png"}
               alt="Main Section Image"
@@ -123,7 +123,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="p-6 rounded-xl bg-white shadow-neutral-200 shadow-sm max-w-[250px] w-full">
+          <div className="p-6 rounded-xl bg-white shadow-neutral-200 shadow-sm max-w-[250px] w-full cursor-default">
             <Image
               src={"/assets/main3.png"}
               alt="Main Section Image"
@@ -154,7 +154,7 @@ export default function Home() {
           ></path>
         </svg>
       </div>
-      <section className="flex items-center justify-center pt-20 mt-20 mb-20 p-10 w-full min-h-[62vh] bg-cover bg-center bg-no-repeat bg-[#f6f6f6]">
+      <section className="flex items-center justify-center pt-20 mb-20 p-10 w-full min-h-[62vh] bg-cover bg-center bg-no-repeat bg-[#f6f6f6]">
         <div className="w-full flex justify-center max-w-[850px] items-center sm:flex-nowrap flex-wrap">
           <Image
             src={"/assets/main4.png"}
@@ -197,7 +197,7 @@ export default function Home() {
         </svg>
       </div>
 
-      <section className="pt-20 mt-20 border-t border-neutral-200 mb-20 w-full max-w-[1250px] p-[2%] sm:p-[5%]">
+      <section className="pt-20 mt-20 border-t border-neutral-200 mb-20 w-full p-[2%] sm:p-[5%] max-w-[1350px]">
         <h1 className="text-3xl font-semibold">Receitas do momento</h1>
         {recipeData && recipeData.recipes && (
           <SwiperRecipes recipes={recipeData.recipes} />
