@@ -30,6 +30,8 @@ export const GET_ALL_RECIPES = gql`
       qtdLikes
       likes
       creatorId
+      creatorPhoto
+      creatorName
     }
   }
 `;
@@ -39,7 +41,7 @@ export const GET_RECIPE_DATA = gql`
     recipe(id: $id) {
       id
       title
-      ingredients   
+      ingredients
       methods
       photo
       qtdLikes
@@ -99,7 +101,7 @@ export const GET_USER_COMMENTS = gql`
   }
 `;
 
-export const GET_ALL_USERS = gql `
+export const GET_ALL_USERS = gql`
   query {
     users {
       id
@@ -112,4 +114,21 @@ export const GET_ALL_USERS = gql `
       bio
     }
   }
-`
+`;
+
+export const SEARCH_RECIPE = gql`
+  query searchRecipe($string: String!) {
+    searchRecipe(string: $string) {
+      id
+      title
+      ingredients
+      methods
+      photo
+      qtdLikes
+      likes
+      creatorId
+      creatorPhoto
+      creatorName
+    }
+  }
+`;

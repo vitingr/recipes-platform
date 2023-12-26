@@ -21,34 +21,12 @@ const Sidebar = () => {
 
   const { data: usersData, loading: usersLoading } = useQuery(GET_ALL_USERS);
 
-  const getAllRecipes = async () => {
-    try {
-      if (recipeLoading === false) {
-        if (recipeData.recipes.length === 0) {
-          await refetchRecipes();
-        }
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  useEffect(() => {
-    if (
-      session?.user?.email !== undefined &&
-      status === "authenticated" &&
-      recipeLoading === false &&
-      usersLoading === false
-    ) {
-      getAllRecipes();
-    }
-  }, [session, recipeLoading]);
-
   return (
     recipeData &&
     recipeData.recipes &&
     usersData &&
-    usersData.users && (
+    usersData.users && 
+    usersLoading === false &&(
       <div className="h-full flex-col items-center gap-10 2xl:flex hidden w-full max-w-[400px]">
         <section className="w-full bg-white rounded-xl p-6 border border-neutral-100 shadow-neutral-200 shadow-sm">
           <h1 className="text-2xl font-semibold mb-8">Perfis Famosos</h1>

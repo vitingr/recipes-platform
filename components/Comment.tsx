@@ -5,7 +5,7 @@ import { SlLike, SlDislike  } from "react-icons/sl";
 
 const Comment = ({ comment }: { comment: CommentProps }) => {
   return (
-    <div className="w-full flex items-start gap-2 pb-6 mb-6 border-b border-neutral-100">
+    <div className="w-full flex items-start gap-2 pb-6 mb-6 border-b border-neutral-200">
       <Image
         src={comment.creatorPhoto}
         alt="Profile Picture"

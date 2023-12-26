@@ -5,7 +5,6 @@ import UploadImage from "@/components/config/UploadImage";
 import { CREATE_RECIPE } from "@/graphql/mutations";
 import { infoUser } from "@/utils/common/userContext";
 import { useMutation } from "@apollo/client";
-import { useSession } from "next-auth/react";
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
@@ -16,16 +15,15 @@ import { RECIPE_TYPES } from "@/constants/recipe-types";
 
 type RecipeTypeProps = {
   name: string;
-  value: string
-}
+  value: string;
+};
 
 const page = () => {
   // Get User Info
   const { data } = infoUser();
-  const { data: session, status } = useSession();
   const router = useRouter();
 
-  const [sendImage, setSendImage] = useState<boolean>(false);
+  const [showSendImage, setShowSendImage] = useState<boolean>(false);
 
   const [title, setTitle] = useState<string>("");
   const [description, setDescription] = useState<string>("");
@@ -129,24 +127,26 @@ const page = () => {
               alt="Recipe Image"
               width={300}
               height={235}
-              className="max-w-[300px] max-h-[235px] w-full h-full"
+              className="w-[300px] h-[235px] cursor-pointer"
+              onClick={() => setShowSendImage(true)}
             />
           ) : (
             <div
               className="w-[300px] p-6 border border-neutral-300 border-dashed h-[235px] flex justify-center items-center cursor-pointer transition-all duration-300 hover:bg-neutral-100 -mt-8"
-              onClick={() => setSendImage(true)}
+              onClick={() => setShowSendImage(true)}
             >
-              {sendImage && (
-                <UploadImage
-                  currentFoto=""
-                  setState={setImage}
-                  text="Envie uma imagem do seu prato"
-                />
-              )}
-              <p className="text-neutral-400 text-sm">
+              <p className="text-neutral-400 text-sm text-center">
                 Adicione uma foto da sua receita
               </p>
             </div>
+          )}
+          {showSendImage && (
+            <UploadImage
+              currentFoto={""}
+              setState={setImage}
+              text="Envie uma imagem do seu prato"
+              show={setShowSendImage}
+            />
           )}
           <div className="w-full">
             <textarea
@@ -185,7 +185,9 @@ const page = () => {
         >
           <option value="">Selecione o tipo da receita</option>
           {RECIPE_TYPES.map((type: RecipeTypeProps, index: number) => (
-            <option value={type.value} key={index}>{type.name}</option>
+            <option value={type.value} key={index}>
+              {type.name}
+            </option>
           ))}
         </select>
 
@@ -242,7 +244,7 @@ const page = () => {
             />
           )}
 
-          {!sendImage && (
+          {!showSendImage && (
             <div className="cta" onClick={() => addNewIngredient()}>
               <span>Adicionar Ingrediente</span>
               <svg viewBox="0 0 13 10" height="10px" width="15px">
@@ -333,7 +335,7 @@ const page = () => {
             </>
           )}
 
-          {!sendImage ? (
+          {!showSendImage ? (
             <div className="w-full flex justify-center">
               {methodStep >= 5 ? (
                 <></>

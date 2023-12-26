@@ -141,11 +141,3 @@ export const UPDATE_USER_INFO = gql`
     }
   }
 `;
-
-// export const EDIT_PROFILE_PHOTO = gql`
-//   mutation ($id: String!, photo: String!) {
-//     updateUserPhoto(updateUserPhoto: {id: id, photo: photo}) {
-//       name
-//     }
-//   }
-// `;

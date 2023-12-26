@@ -1,28 +1,21 @@
 "use client";
 
-import Popup from "@/components/Popup";
-import UserBio from "@/components/Popups/UserBio";
 import MainProfile from "@/components/Profile/MainProfile";
-import ProfileRecipe from "@/components/Recipe/ProfileRecipe";
 import ToastMessage from "@/components/config/ToastMessage";
 import UploadImage from "@/components/config/UploadImage";
 import { UPDATE_USER_INFO } from "@/graphql/mutations";
-import { GET_USER_CREATED_RECIPES } from "@/graphql/queries";
-import { RecipeProps } from "@/types";
 import { infoUser } from "@/utils/common/userContext";
 import { useMutation, useQuery } from "@apollo/client";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
-import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import { TiStarFullOutline } from "react-icons/ti";
 import { toast } from "react-toastify";
 
 const page = () => {
   const { data: session, status } = useSession();
   const { data, getUserInfo } = infoUser();
 
-  // Update Info States
+  // Update Info States  
   const [userPhoto, setUserPhoto] = useState<string>(data.getUser.photo || "");
   const [changeUserPhoto, setChangeUserPhoto] = useState<boolean>(false);
 
@@ -79,7 +72,7 @@ const page = () => {
               alt="User Profile Photo"
               width={60}
               height={60}
-              className="rounded-full cursor-pointer"
+              className="rounded-full cursor-pointer w-[60px] h-[60px]"
             />
             <div
               className="w-full text-[#f1656a] border border-[#f1656a] text-sm py-2 rounded-full flex justify-center items-center cursor-pointer"
@@ -92,6 +85,7 @@ const page = () => {
           {changeUserPhoto && (
             <UploadImage
               currentFoto=""
+              show={setChangeUserPhoto}
               setState={setUserPhoto}
               text="Envie uma imagem para o seu perfil"
             />

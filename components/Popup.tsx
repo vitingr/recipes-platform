@@ -19,10 +19,13 @@ const Popup = ({ children, title, state, handleSubmit }: PopupProps) => {
                 }}
               />
             ) : (
-              <IoCloseOutline
+              <IoCloseOutline 
                 size={25}
                 className="cursor-pointer"
-                onClick={() => state(false)}
+                onClick={async () => {
+                  await state(false)
+                  console.log("VAI TOMAR NO CU TODO MUNDO VAI SE FODER VAI PRA PUTA QUE PARIU TODO MUNDO")
+                }}
               />
             )}
           </div>
