@@ -11,7 +11,7 @@ const Comment = ({ comment }: { comment: CommentProps }) => {
         alt="Profile Picture"
         width={35}
         height={35}
-        className="rounded-full"
+        className="rounded-full w-[35px] h-[35px]"
       />
       <div className="flex flex-col gap-2">
         <div className="flex flex-col justify-center">

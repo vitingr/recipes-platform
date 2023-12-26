@@ -1,13 +1,34 @@
 "use client";
 
 import SwiperRecipes from "@/components/config/SwiperRecipes";
+import ToastMessage from "@/components/config/ToastMessage";
 import { GET_ALL_RECIPES } from "@/graphql/queries";
 import { useQuery } from "@apollo/client";
 import Image from "next/image";
-import { useEffect } from "react";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 import { IoSearch } from "react-icons/io5";
+import { toast } from "react-toastify";
 
 export default function Home() {
+  const router = useRouter();
+
+  const [search, setSearch] = useState<string>("");
+
+  // Search Recipe Function
+  const handleSearchRecipe = async () => {
+    try {
+      if (search !== "") {
+        router.push(`/home/search/${search}`);
+      } else {
+        toast.error("Primeiramente digite algo para buscar");
+      }
+    } catch (error) {
+      toast.error("Não foi possível retornar um resultado para a sua busca");
+    }
+  };
+
+  // Get Recipe Data Queries
   const {
     data: recipeData,
     loading: recipeLoading,
@@ -35,6 +56,7 @@ export default function Home() {
 
   return (
     <div className="min-h-[62vh] w-full flex flex-col items-center">
+      <ToastMessage />
       <section className="w-full max-w-[750px] bg-[#f1f2f4] p-6 rounded-xl flex gap-6 sm:flex-nowrap flex-wrap">
         <Image
           src={"/assets/image.jpg"}
@@ -69,8 +91,18 @@ export default function Home() {
           Procure por aqui qual é a receita do seu prato favorito
         </p>
         <form className="flex justify-between items-center sm:gap-8 gap-4 sm:w-[550px] w-[350px] mt-20 p-6 border boder-neutral-200 rounded-xl">
-          <div className="flex items-center w-full gap-4">
-            <IoSearch size={20} />
+          <form
+            onSubmit={async (e: React.SyntheticEvent) => {
+              e.preventDefault();
+              await handleSearchRecipe();
+            }}
+            className="flex items-center w-full gap-4"
+          >
+            <IoSearch
+              size={20}
+              className="gray-icon cursor-pointer"
+              onClick={() => handleSearchRecipe()}
+            />
             <input
               type="text"
               name="search"
@@ -81,7 +113,7 @@ export default function Home() {
               minLength={2}
               autoComplete="off"
             />
-          </div>
+          </form>
           <button className="sm:text-base text-sm px-2 py-1 sm:px-4 sm:py-2 w-[175px] bg-[#f1656a] text-white rounded-xl">
             Buscar Receita
           </button>
@@ -164,17 +196,19 @@ export default function Home() {
             className="max-w-[500px] max-h-[500px] w-full h-full"
           />
           <div>
-            <h1 className="text-3xl font-semibold">We Deliver Anywhere in the Tri-State Area</h1>
+            <h1 className="text-3xl font-semibold">
+              We Deliver Anywhere in the Tri-State Area
+            </h1>
             <p className="mt-6 text-[#717171] text-justify">
               Each Freshly meal is perfectly sized for 1 person to enjoy at 1
               sitting. Our fully-prepared meals a re delivered fresh, and ready
               to eat in 3 minutes
             </p>
-            <p className="mt-6 italic">
-              Nossas receitas são incríveis
-            </p>
+            <p className="mt-6 italic">Nossas receitas são incríveis</p>
             <div className="flex gap-6 items-center justify-between mt-10 w-full pb-14">
-              <div className="bg-[#f1656a] text-white p-3 rounded-xl w-full text-center cursor-pointer">Contact Us</div>
+              <div className="bg-[#f1656a] text-white p-3 rounded-xl w-full text-center cursor-pointer">
+                Contact Us
+              </div>
               <div className="border border-neutral-600 text-neutral-600 p-3 rounded-xl w-full text-center cursor-pointer">
                 View Menu
               </div>

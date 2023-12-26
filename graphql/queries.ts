@@ -19,6 +19,25 @@ export const GET_USER = gql`
   }
 `;
 
+export const GET_USER_BY_ID = gql`
+  query getUserById($id: String!) {
+    getUserById(id: $id) {
+      id
+      name
+      firstname
+      lastname
+      email
+      partner
+      photo
+      bio
+      recipesCreated
+      recipesLiked
+      driverRecipeCreate
+      driverProfile
+    }
+  }
+`;
+
 export const GET_ALL_RECIPES = gql`
   query getAllRecipes {
     recipes {
@@ -119,6 +138,23 @@ export const GET_ALL_USERS = gql`
 export const SEARCH_RECIPE = gql`
   query searchRecipe($string: String!) {
     searchRecipe(string: $string) {
+      id
+      title
+      ingredients
+      methods
+      photo
+      qtdLikes
+      likes
+      creatorId
+      creatorPhoto
+      creatorName
+    }
+  }
+`;
+
+export const SEARCH_RECIPE_TYPES = gql`
+  query searchRecipeType($type: String!) {
+    searchRecipeType(type: $type) {
       id
       title
       ingredients

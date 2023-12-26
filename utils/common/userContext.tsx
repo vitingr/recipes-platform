@@ -20,25 +20,22 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
     data: userData,
     loading: userLoading,
     refetch: refetchUser,
+    error: userError,
   } = useQuery(GET_USER, {
     variables: {
       email: session?.user?.email,
     },
-    skip: !session?.user?.email, // Skip the query if email is not available
+    skip: !session?.user?.email,
   });
 
   const getUserInfo = async () => {
     try {
-      // Check if the query is loading yet
       if (userLoading === false) {
-        // If user doesnt exists, create a new one
         if (userData === undefined) {
-          // Initial Params
           const name = session?.user?.name;
           const firstname = name?.split(" ")[0];
           const lastname = name?.split(" ")[1];
 
-          // Async graphql query to create a new user
           await createUser({
             variables: {
               name: name,
@@ -48,7 +45,7 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
               photo: session?.user?.image || "",
             },
           });
-          // Refresh data to get the current user info
+
           await refetchUser();
         } else {
           setData(userData);

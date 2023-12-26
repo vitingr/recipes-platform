@@ -34,20 +34,20 @@ const page = () => {
   }, [session, status, avaliationsLoading]);
 
   return (
-      <MainProfile>
-        <h1 className="mb-16 mt-4 text-2xl font-semibold cursor-default transition-all duration-300 hover:text-[#f1656a]">
-          Meus Comentários e Avaliações
-        </h1>
-        <div className="flex flex-wrap gap-6 w-full">
-          {avaliationsData &&
-            avaliationsData.findUserCommentaries &&
-            avaliationsData.findUserCommentaries.map(
-              (userComment: CommentProps, index: number) => (
-                <Comment comment={userComment} key={index} />
-              )
-            )}
-        </div>
-      </MainProfile>
+    <MainProfile>
+      <h1 className="mb-16 mt-4 text-2xl font-semibold cursor-default transition-all duration-300 hover:text-[#f1656a]">
+        Meus Comentários e Avaliações
+      </h1>
+      <div className="flex flex-wrap gap-6 w-full">
+        {avaliationsData &&
+          avaliationsData.findUserCommentaries &&
+          avaliationsData.findUserCommentaries.map(
+            (userComment: CommentProps, index: number) => (
+              <Comment comment={userComment} key={index} />
+            )
+          )}
+      </div>
+    </MainProfile>
   );
 };
 

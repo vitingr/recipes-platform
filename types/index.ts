@@ -49,6 +49,7 @@ export interface UploadProps {
 export interface HolidayProps {
   image: string;
   title: string;
+  type: string;
 }
 
 export interface CommentProps {

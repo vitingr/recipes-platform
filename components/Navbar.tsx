@@ -146,7 +146,7 @@ const Navbar = () => {
                 </h3>
               </Link>
               <Link
-                href={"/favourites"}
+                href={"/profile/favouritesRecipes"}
                 className="flex w-full justify-between items-center gap-8 cursor-pointer"
                 id="coupons"
               >

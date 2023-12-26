@@ -39,7 +39,7 @@ const MainProfile = ({ children }: { children: React.ReactNode }) => {
                   alt="Profile image"
                   width={100}
                   height={100}
-                  className="rounded-3xl selection:bg-transparent -mt-20"
+                  className="rounded-3xl selection:bg-transparent -mt-20 w-[100px] h-[100px]"
                 />
                 <h1 className="text-lg font-semibold mt-4">
                   {session?.user?.name}

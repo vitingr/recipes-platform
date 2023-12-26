@@ -31,7 +31,7 @@ const Sidebar = () => {
         <section className="w-full bg-white rounded-xl p-6 border border-neutral-100 shadow-neutral-200 shadow-sm">
           <h1 className="text-2xl font-semibold mb-8">Perfis Famosos</h1>
           {usersData.users.slice(0, 5).map((user: UserProps, index: number) => (
-            <div className="flex gap-4 items-center mb-6" key={index}>
+            <Link href={`/profile/seeProfile/${user.id}`} className="flex gap-4 items-center mb-6" key={index}>
               <Image
                 src={user.photo}
                 alt="Profile Picture"
@@ -43,7 +43,7 @@ const Sidebar = () => {
                 <h2 className="font-semibold">{user.name}</h2>
                 <p className="text-sm text-[#717171]">{user.bio}</p>
               </div>
-            </div>
+            </Link>
           ))}
         </section>
 
