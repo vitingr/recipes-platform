@@ -25,14 +25,14 @@ const RecipeCard = ({ content }: { content: RecipeProps }) => {
           </p>
           <div className="flex flex-col gap-1">
             <span className="text-[#717171] text-xs">
-              {content.ingredients.length > 0
-                ? `* ${content.ingredients.length} ingrediente`
-                : `* ${content.ingredients.length} ingredientes`}
+              {content.ingredients.length > 1
+                ? `* ${content.ingredients.length} ingredientes`
+                : `* ${content.ingredients.length} ingrediente`}
             </span>
             <span className="text-[#717171] text-xs">
-              {content.methods.length > 0
-                ? `* ${content.methods.length} etapa`
-                : `* ${content.methods.length} etapas`}
+              {content.methods.length > 1
+                ? `* ${content.methods.length} etapas`
+                : `* ${content.methods.length} etapa`}
             </span>
           </div>
           <button className="text-white bg-[#f1656a] w-full rounded-lg py-1 text-sm mt-6">

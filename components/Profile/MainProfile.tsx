@@ -63,7 +63,7 @@ const MainProfile = ({ children }: { children: React.ReactNode }) => {
                   Adicionar Bio
                 </li>
                 <Link
-                  href={"/home/createRecipe"}
+                  href={"/recipe/createRecipe"}
                   className="text-sm text-[#717171] cursor-pointer"
                 >
                   Adicionar Receita

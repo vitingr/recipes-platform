@@ -8,13 +8,11 @@ import {
   IoMenuOutline,
   IoTicketOutline,
   IoSettingsOutline,
-  IoStorefrontOutline,
   IoAdd,
   IoHomeOutline,
 } from "react-icons/io5";
 import { AiOutlineHeart } from "react-icons/ai";
 import { RiShakeHandsLine } from "react-icons/ri";
-import { BsTicketPerforated } from "react-icons/bs";
 import { VscSignOut } from "react-icons/vsc";
 import { infoUser } from "@/utils/common/userContext";
 import { BsPerson } from "react-icons/bs";
@@ -29,13 +27,15 @@ const Navbar = () => {
   return (
     <header className="w-full bg-white p-6 fixed flex justify-center selection:text-white selection:bg-[#f1656a]">
       <nav className="w-full max-w-[1600px] flex justify-around gap-2 items-center">
-        <Image
-          src={"/assets/logo.png"}
-          alt="logo"
-          width={120}
-          height={60}
-          className="selection:bg-transparent cursor-pointer"
-        />
+        <Link href={"/home"}>
+          <Image
+            src={"/assets/logo.png"}
+            alt="logo"
+            width={120}
+            height={60}
+            className="selection:bg-transparent cursor-pointer"
+          />
+        </Link>
 
         <ul className="sm:flex justify-center items-center gap-16 hidden">
           <Link href={"/"}>
@@ -70,20 +70,12 @@ const Navbar = () => {
             <GoSearch size={22.5} className="cursor-pointer gray-icon" />
             <Link href={"/profile"}>
               <BsPerson size={22.5} className="cursor-pointer gray-icon" />
-              {/* <Image
-                src={session?.user?.image || ""}
-                alt="Profile Image"
-                width={40}
-                height={40}
-                className="rounded-full cursor-pointer selection:bg-transparent"
-              /> */}
             </Link>
             <IoMenuOutline
               size={22.5}
               className="cursor-pointer gray-icon"
               onClick={() => setShowMenu(!showMenu)}
             />
-            {/* <button onClick={() => signOut()} className='py-2 text-sm text-[#f1656a] border border-[#f1656a] rounded-xl w-[100px]'>Sair</button> */}
           </div>
         ) : (
           <div className="flex gap-8">
@@ -104,7 +96,7 @@ const Navbar = () => {
 
         {showMenu ? (
           <div className="z-20 fixed right-0 bg-[#fff] shadow-md h-[650px] w-[350px] border border-[#f7f7f7] translate-y-2 transition-all rounded-lg sm:mt-[700px] mt-[650px] lg:left-[64%]">
-            <div className="p-10">    
+            <div className="p-10">
               <h1 className="text-3xl font-bold text-center">
                 Olá, {session?.user?.name}
               </h1>

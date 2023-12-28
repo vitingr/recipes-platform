@@ -200,11 +200,11 @@ const page = () => {
         </div>
       </section>
 
-      <section className="mt-[3em]">
+      <section className="mt-[2em]">
         <h1 className="text-xl font-semibold mt-[2em] w-full py-2 bg-[#fafafa] border border-neutral-200 px-4">
           Informações
         </h1>
-        <div className="flex justify-between w-full gap-4 mt-6">
+        <div className="flex justify-between w-full gap-4 mt-6 p-4 sm:p-0">
           <Image
             src={recipeData.recipe.photo}
             alt="Recipe Photo"
@@ -229,12 +229,12 @@ const page = () => {
         </div>
       </section>
 
-      <section className="mt-[1em] flex gap-6 justify-between">
+      <section className="mt-[1em] flex gap-6 justify-between flex-wrap sm:flex-wrap">
         <div className="w-full">
           <h1 className="text-xl font-semibold mt-[2em] w-full py-2 bg-[#fafafa] border border-neutral-200 px-4">
             Modo de Preparo
           </h1>
-          <div className="flex flex-col mt-4 max-w-[500px]">
+          <div className="flex flex-col mt-4 max-w-[500px] p-4 sm:p-0">
             {recipeData.recipe.methods.map((step: string, index: number) => (
               <div
                 key={index}
@@ -252,7 +252,7 @@ const page = () => {
           <h1 className="text-xl font-semibold mt-[2em] w-full py-2 bg-[#fafafa] border border-neutral-200 px-4">
             Ingredientes
           </h1>
-          <div className="flex flex-col mt-4 gap-2">
+          <div className="flex flex-col mt-4 gap-2 p-4 sm:p-0">
             {recipeData.recipe.ingredients.map(
               (ingredient: string, index: number) => (
                 <div key={index} className="w-full">
@@ -269,11 +269,11 @@ const page = () => {
         </div>
       </section>
 
-      <section className="mt-[5em] flex gap-4 justify-between">
-        <h1 className="text-xl font-semibold w-full ">
+      <section className="mt-[5em] flex gap-4 flex-col sm:flex-row sm:justify-between">
+        <h1 className="text-xl font-semibold w-full">
           Compartilhe essa Receita
         </h1>
-        <div className="flex gap-4 w-full justify-end">
+        <div className="flex gap-4 w-full sm:justify-end">
           <MdWhatsapp size={22} className="gray-icon-animated cursor-pointer" />
           <MdFacebook size={22} className="gray-icon-animated cursor-pointer" />
           <AiOutlineInstagram
@@ -288,7 +288,7 @@ const page = () => {
       </section>
 
       <section className="mt-[1em] flex flex-col items-center">
-        <h2 className="text-xl font-semibold text-center pt-[3em] mt-[3em] w-full">
+        <h2 className="text-xl font-semibold text-center pt-[3em] mt-[3em] w-full mb-12 sm:mb-0">
           Comentários
         </h2>
 

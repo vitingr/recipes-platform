@@ -42,7 +42,7 @@ const page = () => {
     <div className="w-full sm:p-[5%] p-[2%] max-w-[1850px] flex flex-col items-center bg-white border border-neutral-100 shadow-sm shadow-neutral-200 rounded-xl">
       <ToastMessage />
       <section className="w-full flex flex-col">
-        <h1 className="text-3xl font-bold">Explorar receitas</h1>
+        <h1 className="text-3xl font-bold text-center sm:text-left">Explorar receitas</h1>
         <form onSubmit={async (e: React.SyntheticEvent) => {
           e.preventDefault()
           await handleSearchRecipe()
@@ -64,7 +64,7 @@ const page = () => {
       </section>
 
       <section className="w-full mt-[10em]">
-        <h1 className="text-3xl font-bold">Receitas Temáticas</h1>
+        <h1 className="text-3xl font-bold text-center sm:text-left">Receitas Temáticas</h1>
 
         <div className="flex gap-16 w-full justify-center flex-wrap mt-16">
           {holidayCards.map((holiday: HolidayProps, index: number) => (

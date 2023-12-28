@@ -13,7 +13,7 @@ const IngredientInput = ({
 }: IngredientInputProps) => {
   return (
     <div className="flex justify-between w-full gap-6 items-center">
-      <div>
+      <div className="w-full">
         <label htmlFor="ingredient-name">{(index + 1).toString()}ª Ingrediente</label>
         <input
           type="text"
@@ -25,7 +25,7 @@ const IngredientInput = ({
           onChange={(e) => ingredientState(index, e.target.value)}
         />
       </div>
-      <div>
+      <div className="w-[250px]">
         <label htmlFor="ingredient-quantity">Quantidade utilizada</label>
         <input
           type="number"

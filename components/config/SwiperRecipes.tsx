@@ -20,8 +20,8 @@ const SwiperRecipes = ({ recipes }: { recipes: RecipeProps[] }) => {
       scrollbar={{ draggable: true, hide: true, el: "no-scrollbar" }}
       className="mt-16 w-full no-scrollbar"
       breakpoints={{
-        500: {
-          slidesPerView: 1,
+        300: {
+          slidesPerView: 1.3,
           spaceBetween: 5,
         },
         640: {

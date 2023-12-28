@@ -120,7 +120,7 @@ const page = () => {
         <h2 className="w-full font-semibold text-xl mb-10 py-2 bg-[#fafafa] border border-neutral-200 px-4">
           Apresente sua Receita
         </h2>
-        <div className="w-full flex justify-between gap-6 items-center">
+        <div className="w-full flex flex-col sm:flex-row sm:justify-between gap-6 items-center">
           {image != "" ? (
             <Image
               src={image}
@@ -132,7 +132,7 @@ const page = () => {
             />
           ) : (
             <div
-              className="w-[300px] p-6 border border-neutral-300 border-dashed h-[235px] flex justify-center items-center cursor-pointer transition-all duration-300 hover:bg-neutral-100 -mt-8"
+              className="w-full sm:w-[300px] p-6 border border-neutral-300 border-dashed h-[235px] flex justify-center items-center cursor-pointer transition-all duration-300 hover:bg-neutral-100 -mt-8"
               onClick={() => setShowSendImage(true)}
             >
               <p className="text-neutral-400 text-sm text-center">
